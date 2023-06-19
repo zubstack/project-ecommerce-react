@@ -51,6 +51,7 @@ let optionsRight = [
   },
 ];
 
+// eslint-disable-next-line react/prop-types
 function NavItem({ to, children, activeStyle }) {
   return (
     <NavLink
