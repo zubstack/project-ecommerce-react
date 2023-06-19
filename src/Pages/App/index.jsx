@@ -7,6 +7,7 @@ import NotFound from "../NotFound";
 import SignIn from "../SignIn";
 import SignOut from "../SignOut";
 import Navbar from "../../Components/Navbar";
+import Layout from "../../Components/Layout";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -44,8 +45,10 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
       <Navbar />
+      <Layout>
+        <AppRoutes />
+      </Layout>
     </BrowserRouter>
   );
 }
