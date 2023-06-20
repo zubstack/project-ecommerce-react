@@ -1,3 +1,4 @@
+import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 let optionsLeft = [
@@ -94,7 +95,9 @@ function Navbar() {
           );
         })}
         <li>
-          <NavItem to={"/shop-cart"}>🛒0</NavItem>
+          <NavItem to={"/shop-cart"}>
+            <FaShoppingCart />
+          </NavItem>
         </li>
       </ul>
     </nav>
