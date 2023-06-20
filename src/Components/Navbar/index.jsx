@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { ShoppingCartContext } from "../../Context";
 
 let optionsLeft = [
   {
@@ -65,6 +67,7 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
+  const { favouritesCounter } = useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
   return (
     <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white">
@@ -96,7 +99,10 @@ function Navbar() {
         })}
         <li>
           <NavItem to={"/shop-cart"}>
-            <FaShoppingCart />
+            <div className="flex items-center gap-1">
+              <FaShoppingCart />
+              {favouritesCounter}
+            </div>
           </NavItem>
         </li>
       </ul>
