@@ -3,15 +3,22 @@ import { FaPlus } from "react-icons/fa";
 import { ShoppingCartContext } from "../../Context";
 
 function Card({ data }) {
-  let { count, setCount, openProductDetails } = useContext(ShoppingCartContext);
+  let { count, setCount, openProductDetails, productToShow, setProductToShow } =
+    useContext(ShoppingCartContext);
+
+  const showProductDetails = () => {
+    openProductDetails();
+    setProductToShow(data);
+    console.log(productToShow);
+  };
 
   return (
     <div
       className="bg-white cursor-pointer w-56 h-60"
-      onClick={() => openProductDetails()}
+      onClick={() => showProductDetails()}
     >
       <figure className="relative mb-2 w-full h-4/5">
-        <span className="absolute bottom-0 left- bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
+        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
           {data.category.name}
         </span>
         <img

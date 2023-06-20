@@ -8,6 +8,13 @@ const ShoppingCartProvider = ({ children }) => {
   const openProductDetails = () => setDetailsOpen(true);
   const closeProductDetails = () => setDetailsOpen(false);
 
+  const [productToShow, setProductToShow] = useState({
+    title: "",
+    price: "",
+    description: "",
+    images: [],
+  });
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -16,6 +23,8 @@ const ShoppingCartProvider = ({ children }) => {
         detailsOpen,
         openProductDetails,
         closeProductDetails,
+        productToShow,
+        setProductToShow,
       }}
     >
       {children}
