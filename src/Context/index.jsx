@@ -15,20 +15,20 @@ const ShoppingCartProvider = ({ children }) => {
     images: [],
   });
 
-  const [favouritesList, setFavouritesList] = useState("");
-  const favouritesCounter = favouritesList.length;
+  const [shoppingCart, setShoppingCart] = useState("");
+  const shoppingCounter = shoppingCart.length;
 
   return (
     <ShoppingCartContext.Provider
       value={{
-        favouritesCounter,
+        shoppingCounter,
         detailsOpen,
         openProductDetails,
         closeProductDetails,
         productToShow,
         setProductToShow,
-        favouritesList,
-        setFavouritesList,
+        shoppingCart,
+        setShoppingCart,
       }}
     >
       {children}

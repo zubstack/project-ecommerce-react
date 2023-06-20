@@ -1,7 +1,5 @@
 .product-detail {
   width: 360px;
   height: 100vh;
-}
-* {
-  border: 1px solid blue;
+  top: 68px;
 }

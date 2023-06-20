@@ -67,7 +67,7 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
-  const { favouritesCounter } = useContext(ShoppingCartContext);
+  const { shoppingCounter } = useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
   return (
     <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white">
@@ -101,7 +101,7 @@ function Navbar() {
           <NavItem to={"/shop-cart"}>
             <div className="flex items-center gap-1">
               <FaShoppingCart />
-              {favouritesCounter}
+              {shoppingCounter}
             </div>
           </NavItem>
         </li>
