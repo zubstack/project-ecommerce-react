@@ -8,6 +8,7 @@ import SignIn from "../SignIn";
 import SignOut from "../SignOut";
 import Navbar from "../../Components/Navbar";
 import Layout from "../../Components/Layout";
+import { ShoppingCartProvider } from "../../Context";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -44,12 +45,14 @@ function AppRoutes() {
 }
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Layout>
-        <AppRoutes />
-      </Layout>
-    </BrowserRouter>
+    <ShoppingCartProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Layout>
+          <AppRoutes />
+        </Layout>
+      </BrowserRouter>
+    </ShoppingCartProvider>
   );
 }
 
