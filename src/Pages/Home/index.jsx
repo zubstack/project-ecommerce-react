@@ -3,6 +3,7 @@ import Card from "../../Components/Card";
 import useFetch from "../../Hooks/useFetch";
 import { urlApi } from "../../Data";
 import ProductDetail from "../../Components/ProductDetail";
+import ShoppingAside from "../../Components/ShoppingAside";
 
 function Home() {
   const items = useFetch(`${urlApi}/products`);
@@ -16,6 +17,7 @@ function Home() {
         ))}
       </div>
       <ProductDetail />
+      <ShoppingAside />
     </div>
   );
 }

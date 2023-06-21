@@ -3,8 +3,13 @@ import { FaPlus } from "react-icons/fa";
 import { ShoppingCartContext } from "../../Context";
 
 function Card({ data }) {
-  let { openProductDetails, setProductToShow, shoppingCart, setShoppingCart } =
-    useContext(ShoppingCartContext);
+  let {
+    openProductDetails,
+    setProductToShow,
+    shoppingCart,
+    setShoppingCart,
+    openShoppingAside,
+  } = useContext(ShoppingCartContext);
 
   const showProductDetails = () => {
     openProductDetails();
@@ -31,7 +36,11 @@ function Card({ data }) {
         />
 
         <button
-          onClick={addToShoppingCart}
+          onClick={(event) => {
+            event.stopPropagation();
+            addToShoppingCart();
+            openShoppingAside();
+          }}
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
         >
           <FaPlus className="text-sm" />
