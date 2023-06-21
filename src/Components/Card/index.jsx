@@ -48,7 +48,7 @@ function Card({ data }) {
       </figure>
       <p className="flex justify-between">
         <span className="card-span text-sm font-light">{data.title}</span>
-        <span className="card-span text-lg font-medium">${data.price}</span>
+        <span className="card-span text-lg font-medium">$ {data.price}</span>
       </p>
     </div>
   );

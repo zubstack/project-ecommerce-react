@@ -14,7 +14,7 @@ const ShoppingCartProvider = ({ children }) => {
     images: [],
   });
 
-  const [shoppingCart, setShoppingCart] = useState("");
+  const [shoppingCart, setShoppingCart] = useState([]);
   const shoppingCounter = shoppingCart.length;
 
   const [shoppingOpen, setShoppingOpen] = useState(false);
