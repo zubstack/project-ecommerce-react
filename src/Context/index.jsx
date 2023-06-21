@@ -50,6 +50,9 @@ const ShoppingCartProvider = ({ children }) => {
     setShoppingCart(newShoppingCart);
   };
 
+  const showTotalPrice = () =>
+    shoppingCart.reduce((total, product) => total + product.price, 0);
+
   const [shoppingOpen, setShoppingOpen] = useState(false);
 
   const openShoppingAside = () => setShoppingOpen(true);
@@ -70,6 +73,7 @@ const ShoppingCartProvider = ({ children }) => {
         shoppingOpen,
         addToShoppingCart,
         removeFromShoppingCart,
+        showTotalPrice,
       }}
     >
       {children}

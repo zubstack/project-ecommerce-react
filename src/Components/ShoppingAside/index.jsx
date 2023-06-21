@@ -6,8 +6,11 @@ import "./styles.css";
 import { v4 as uuidv4 } from "uuid";
 
 function ShoppingAside() {
-  const { closeShoppingAside, shoppingOpen, shoppingCart } =
+  const { closeShoppingAside, shoppingOpen, shoppingCart, showTotalPrice } =
     useContext(ShoppingCartContext);
+
+  let showTotal = showTotalPrice();
+
   return (
     <aside
       className={`product-detail ${
@@ -25,6 +28,16 @@ function ShoppingAside() {
         {shoppingCart.map((product) => (
           <ShoppingCard key={uuidv4()} data={product} keyId={product.key} />
         ))}
+      </div>
+      <div className="px-6">
+        <p
+          className={`${
+            showTotal > 0 ? "flex" : "hidden"
+          }  justify-between items-center`}
+        >
+          <span className="font-light">Total:</span>
+          <span className="font-medium text-2xl">$ {showTotal}</span>
+        </p>
       </div>
     </aside>
   );
