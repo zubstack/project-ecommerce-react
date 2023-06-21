@@ -22,29 +22,34 @@ function ShoppingAside() {
         shoppingOpen ? "flex" : "hidden"
       } checkout-side-menu scrollable-cards flex-col fixed right-0 border border-black rounded-lg bg-white p-4`}
     >
-      <div className="flex justify-between items-center p-6">
+      <div className="flex justify-between items-center p-4">
         <h2 className="font-medium text-xt">My order</h2>
         <button>
           <FaTimes onClick={() => closeShoppingAside()} />
         </button>
       </div>
 
-      <div className="px-2">
+      <div className="px-2 flex-1">
         {shoppingCart.map((product) => (
           <ShoppingCard key={uuidv4()} data={product} keyId={product.key} />
         ))}
       </div>
-      <div className="px-6">
+      <div className="px-6 mb-16">
         <p
           className={`${
             showTotal > 0 ? "flex" : "hidden"
-          }  justify-between items-center`}
+          }  justify-between items-center p-4`}
         >
           <span className="font-light">Total:</span>
           <span className="font-medium text-2xl">$ {showTotal}</span>
         </p>
+        <button
+          className="w-full bg-black py-3 text-white rounded-lg"
+          onClick={handCheckout}
+        >
+          Checkout
+        </button>
       </div>
-      <button onClick={handCheckout}>Checkout</button>
     </aside>
   );
 }
