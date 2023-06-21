@@ -53,6 +53,16 @@ const ShoppingCartProvider = ({ children }) => {
   const showTotalPrice = () =>
     shoppingCart.reduce((total, product) => total + product.price, 0);
 
+  const handCheckout = () => {
+    const orderToAdd = {
+      date: "01.02.23",
+      products: shoppingCart,
+      totalProducts: shoppingCart.length,
+      totalPrice: showTotalPrice(),
+    };
+    console.log(orderToAdd);
+  };
+
   const [shoppingOpen, setShoppingOpen] = useState(false);
 
   const openShoppingAside = () => setShoppingOpen(true);
@@ -74,6 +84,7 @@ const ShoppingCartProvider = ({ children }) => {
         addToShoppingCart,
         removeFromShoppingCart,
         showTotalPrice,
+        handCheckout,
       }}
     >
       {children}

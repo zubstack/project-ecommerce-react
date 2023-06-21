@@ -6,8 +6,13 @@ import "./styles.css";
 import { v4 as uuidv4 } from "uuid";
 
 function ShoppingAside() {
-  const { closeShoppingAside, shoppingOpen, shoppingCart, showTotalPrice } =
-    useContext(ShoppingCartContext);
+  const {
+    closeShoppingAside,
+    shoppingOpen,
+    shoppingCart,
+    showTotalPrice,
+    handCheckout,
+  } = useContext(ShoppingCartContext);
 
   let showTotal = showTotalPrice();
 
@@ -39,6 +44,7 @@ function ShoppingAside() {
           <span className="font-medium text-2xl">$ {showTotal}</span>
         </p>
       </div>
+      <button onClick={handCheckout}>Checkout</button>
     </aside>
   );
 }
