@@ -1,6 +1,6 @@
 import { FaTimes } from "react-icons/fa";
 
-function ShoppingCard({ data }) {
+function ShoppingCard({ keyId, data }) {
   return (
     <div className="flex justify-between items-center p-1">
       <div className="flex items-center gap-2">
@@ -11,7 +11,10 @@ function ShoppingCard({ data }) {
             alt=""
           />
         </figure>
-        <p className="text-sm font-light">{data.title}</p>
+        <p className="text-sm font-light">
+          {data.title}
+          {keyId}
+        </p>
       </div>
       <div className="flex items-center gap-4">
         <p className="text-lg font-medium">$ {data.price}</p>
