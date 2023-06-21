@@ -17,9 +17,28 @@ const ShoppingCartProvider = ({ children }) => {
 
   const [shoppingCart, setShoppingCart] = useState([]);
 
-  shoppingCart.map((product) => (product.key = uuidv4()));
+  shoppingCart.map((product) => {
+    product.key = uuidv4();
+  });
 
   const shoppingCounter = shoppingCart.length;
+
+  const addToShoppingCart = (newItem) => {
+    const productIndex = shoppingCart.findIndex(
+      (product) => product.id === newItem.id
+    );
+    let newShoppingCart = [];
+    if (productIndex >= 0) {
+      newShoppingCart = [...shoppingCart];
+      newShoppingCart[productIndex].quantity++;
+      console.log(newShoppingCart[productIndex].quantity);
+      newShoppingCart[productIndex].price =
+        newItem.price + newShoppingCart[productIndex].price;
+    } else {
+      newShoppingCart = [...shoppingCart, { ...newItem, quantity: 1 }];
+    }
+    setShoppingCart(newShoppingCart);
+  };
 
   const [shoppingOpen, setShoppingOpen] = useState(false);
 
@@ -39,6 +58,7 @@ const ShoppingCartProvider = ({ children }) => {
         openShoppingAside,
         closeShoppingAside,
         shoppingOpen,
+        addToShoppingCart,
       }}
     >
       {children}

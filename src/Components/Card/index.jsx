@@ -6,17 +6,13 @@ function Card({ data }) {
   let {
     openProductDetails,
     setProductToShow,
-    shoppingCart,
-    setShoppingCart,
+    addToShoppingCart,
     openShoppingAside,
   } = useContext(ShoppingCartContext);
 
   const showProductDetails = () => {
     openProductDetails();
     setProductToShow(data);
-  };
-  const addToShoppingCart = () => {
-    setShoppingCart([...shoppingCart, data]);
   };
 
   return (
@@ -37,7 +33,7 @@ function Card({ data }) {
         <button
           onClick={(event) => {
             event.stopPropagation();
-            addToShoppingCart();
+            addToShoppingCart(data);
             openShoppingAside();
           }}
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
