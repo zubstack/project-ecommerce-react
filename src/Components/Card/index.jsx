@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
 import { ShoppingCartContext } from "../../Context";
-import { v4 as uuidv4 } from "uuid";
 
 function Card({ data }) {
   let {
@@ -17,9 +16,7 @@ function Card({ data }) {
     setProductToShow(data);
   };
   const addToShoppingCart = () => {
-    const newProduct = data;
-    newProduct.key = uuidv4();
-    setShoppingCart([...shoppingCart, newProduct]);
+    setShoppingCart([...shoppingCart, data]);
   };
 
   return (

@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 const ShoppingCartContext = createContext();
+import { v4 as uuidv4 } from "uuid";
 
 const ShoppingCartProvider = ({ children }) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -15,6 +16,9 @@ const ShoppingCartProvider = ({ children }) => {
   });
 
   const [shoppingCart, setShoppingCart] = useState([]);
+
+  shoppingCart.map((product) => (product.key = uuidv4()));
+
   const shoppingCounter = shoppingCart.length;
 
   const [shoppingOpen, setShoppingOpen] = useState(false);
