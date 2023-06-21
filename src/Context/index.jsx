@@ -40,6 +40,16 @@ const ShoppingCartProvider = ({ children }) => {
     setShoppingCart(newShoppingCart);
   };
 
+  const removeFromShoppingCart = (item) => {
+    const productIndex = shoppingCart.findIndex(
+      (product) => product.id === item.id
+    );
+    let newShoppingCart = [...shoppingCart];
+    newShoppingCart.splice([productIndex], 1);
+    console.log(newShoppingCart);
+    setShoppingCart(newShoppingCart);
+  };
+
   const [shoppingOpen, setShoppingOpen] = useState(false);
 
   const openShoppingAside = () => setShoppingOpen(true);
@@ -59,6 +69,7 @@ const ShoppingCartProvider = ({ children }) => {
         closeShoppingAside,
         shoppingOpen,
         addToShoppingCart,
+        removeFromShoppingCart,
       }}
     >
       {children}
