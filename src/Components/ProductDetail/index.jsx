@@ -9,7 +9,7 @@ function ProductDetail() {
     <aside
       className={`product-detail ${
         detailsOpen ? "flex" : "hidden"
-      } flex-col fixed right-0 border border-rounded border-black bg-white`}
+      } flex-col fixed right-0 border rounded-lg border-black bg-white`}
     >
       <div className="flex justify-between items-center p-4">
         <h2 className="font-medium text-xt">Details</h2>
@@ -25,11 +25,11 @@ function ProductDetail() {
             alt="headphone"
           />
         </figure>
-        <p className="flex justify-between">
-          <span className="card-span text-sm font-light">
+        <p className="flex justify-between items-center px-3 py-3">
+          <span className="card-span text-lg font-medium tx-title">
             {productToShow.title}
           </span>
-          <span className="card-span text-lg font-medium">
+          <span className="card-span text-2xl font-medium tx-price">
             $ {productToShow.price}
           </span>
         </p>

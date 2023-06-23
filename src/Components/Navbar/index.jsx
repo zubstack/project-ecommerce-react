@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
+import "./styles.css";
 
 let optionsLeft = [
   {
@@ -101,7 +102,7 @@ function Navbar() {
           <NavItem to={"/shop-cart"}>
             <div className="flex items-center gap-1">
               <FaShoppingCart />
-              {shoppingCounter}
+              <span className="button__badge">{shoppingCounter}</span>
             </div>
           </NavItem>
         </li>

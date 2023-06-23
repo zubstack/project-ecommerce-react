@@ -27,7 +27,7 @@ function Card({ data }) {
         <img
           className="w-full h-full object-cover rounded-lg"
           src={data.images[0]}
-          alt="headphone"
+          alt={data.title}
         />
 
         <button
