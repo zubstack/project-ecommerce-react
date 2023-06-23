@@ -3,7 +3,12 @@ const ShoppingCartContext = createContext();
 import { v4 as uuidv4 } from "uuid";
 
 const ShoppingCartProvider = ({ children }) => {
+  //Product Details ♦:
+
+  //State • Open/Close
   const [detailsOpen, setDetailsOpen] = useState(false);
+
+  // Functions • Open/Close
 
   const openProductDetails = () => setDetailsOpen(true);
   const closeProductDetails = () => setDetailsOpen(false);
@@ -15,13 +20,29 @@ const ShoppingCartProvider = ({ children }) => {
     images: [],
   });
 
+  //Shopping Aside ♦:
+
+  //State • Open/Close
+
+  const [shoppingOpen, setShoppingOpen] = useState(false);
+
+  // Functions • Open/Close
+
+  const openShoppingAside = () => setShoppingOpen(true);
+  const closeShoppingAside = () => setShoppingOpen(false);
+
+  //Shopping Cart & Counter
+
   const [shoppingCart, setShoppingCart] = useState([]);
+  const shoppingCounter = shoppingCart.length;
+
+  //Add the property key to each product *
 
   shoppingCart.map((product) => {
     product.key = uuidv4();
   });
 
-  const shoppingCounter = shoppingCart.length;
+  //Shopping Aide • CRUD:
 
   const addToShoppingCart = (newItem) => {
     const productIndex = shoppingCart.findIndex(
@@ -53,8 +74,11 @@ const ShoppingCartProvider = ({ children }) => {
   const showTotalPrice = () =>
     shoppingCart.reduce((total, product) => total + product.price, 0);
 
+  // Orders • State:
   const [order, setOrder] = useState([]);
-  const handCheckout = () => {
+
+  // Checkout Products:
+  const handleCheckout = () => {
     const orderToAdd = {
       date: "01.02.23",
       products: shoppingCart,
@@ -66,10 +90,6 @@ const ShoppingCartProvider = ({ children }) => {
     console.log(order.length);
   };
 
-  const [shoppingOpen, setShoppingOpen] = useState(false);
-
-  const openShoppingAside = () => setShoppingOpen(true);
-  const closeShoppingAside = () => setShoppingOpen(false);
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -87,7 +107,7 @@ const ShoppingCartProvider = ({ children }) => {
         addToShoppingCart,
         removeFromShoppingCart,
         showTotalPrice,
-        handCheckout,
+        handleCheckout,
       }}
     >
       {children}

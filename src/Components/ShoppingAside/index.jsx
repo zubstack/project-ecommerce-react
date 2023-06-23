@@ -11,7 +11,7 @@ function ShoppingAside() {
     shoppingOpen,
     shoppingCart,
     showTotalPrice,
-    handCheckout,
+    handleCheckout,
   } = useContext(ShoppingCartContext);
 
   let showTotal = showTotalPrice();
@@ -45,7 +45,7 @@ function ShoppingAside() {
         </p>
         <button
           className="w-full bg-black py-3 text-white rounded-lg"
-          onClick={handCheckout}
+          onClick={handleCheckout}
         >
           Checkout
         </button>
