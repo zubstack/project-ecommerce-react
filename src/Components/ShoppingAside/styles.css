@@ -27,3 +27,7 @@
   border: 3px solid #000000;
   /* overflow-x: hidden; */
 }
+
+.mark-gray {
+  color: rgb(214, 0, 0);
+}

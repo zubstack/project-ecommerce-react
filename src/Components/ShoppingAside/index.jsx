@@ -20,16 +20,16 @@ function ShoppingAside() {
     <aside
       className={`product-detail ${
         shoppingOpen ? "flex" : "hidden"
-      } checkout-side-menu scrollable-cards flex-col fixed right-0 border border-black rounded-lg bg-white p-4`}
+      } checkout-side-menu scrollable-cards flex-col fixed right-0 border border-black rounded-lg bg-white px-3`}
     >
-      <div className="flex justify-between items-center p-4">
+      <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xt">My order</h2>
         <button>
           <FaTimes onClick={() => closeShoppingAside()} />
         </button>
       </div>
 
-      <div className="px-2 flex-1">
+      <div className="px-1 flex-1">
         {shoppingCart.map((product) => (
           <ShoppingCard key={uuidv4()} data={product} keyId={product.key} />
         ))}

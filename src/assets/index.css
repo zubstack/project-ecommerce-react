@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-text {
+  font-family: "Pathway Extreme", sans-serif;
+}
+
+.tx-title {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.tx-price {
+  color: green;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mark-gray {
+  color: rgb(166, 166, 166);
+}
