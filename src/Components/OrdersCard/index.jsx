@@ -1,10 +1,11 @@
-function OrdersCard({ totalPrice, totalProducts }) {
+function OrdersCard({ data }) {
+  console.log(data);
   return (
-    <div className="flex justify-between items-centermb-3 border border-black">
+    <div className="flex justify-between items-center mb-3 border border-black">
       <p>
-        <span>01.02.23</span>
-        <span>{totalPrice}</span>
-        <span>{totalProducts}</span>
+        <span>{data.date}•</span>
+        <span>{data.totalPrice}•</span>
+        <span>{data.totalProducts}</span>
       </p>
     </div>
   );

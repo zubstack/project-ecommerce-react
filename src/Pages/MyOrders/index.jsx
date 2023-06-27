@@ -6,20 +6,17 @@ function MyOrders() {
   const { orders } = useContext(ShoppingCartContext);
 
   return (
-    <div>
-      MyOrders
+    <>
+      <h1>My Orders</h1>
+
       {orders?.map((order, index) => {
         return (
-          <Link key={index} to={`/my-orders/${order.id}`}>
-            <OrdersCard
-              key={order.id}
-              totalProducts={order.totalProducts}
-              totalPrice={order.totalPrice}
-            ></OrdersCard>
+          <Link key={index} to={`/my-orders/${index}`}>
+            <OrdersCard key={order.id} data={order} />
           </Link>
         );
       })}
-    </div>
+    </>
   );
 }
 

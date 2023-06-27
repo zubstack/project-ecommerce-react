@@ -79,8 +79,10 @@ const ShoppingCartProvider = ({ children }) => {
 
   // Checkout Products:
   const handleCheckout = () => {
+    const date = new Date();
+
     const orderToAdd = {
-      date: "01.02.23",
+      date: date.toLocaleDateString(),
       products: shoppingCart,
       totalProducts: shoppingCart.length,
       totalPrice: showTotalPrice(),
