@@ -6,7 +6,10 @@ import { FaChevronLeft } from "react-icons/fa";
 
 function MyOrder() {
   const { orders } = useContext(ShoppingCartContext);
-  console.log(orders.slice(-1)[0]?.products);
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+  if (index === "last") index = orders?.length - 1;
+  console.log(index);
 
   return (
     <>
@@ -17,7 +20,7 @@ function MyOrder() {
         <h1>My Order</h1>
       </div>
       <div>
-        {orders.slice(-1)[0]?.products.map((product) => (
+        {orders?.[index]?.products.map((product) => (
           <ShoppingCard key={product.key} data={product} keyId={product.key} />
         ))}
       </div>

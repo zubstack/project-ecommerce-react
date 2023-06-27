@@ -25,6 +25,10 @@ function AppRoutes() {
       element: <MyOrder />,
     },
     {
+      path: "/my-orders/:id",
+      element: <MyOrder />,
+    },
+    {
       path: "/my-order",
       element: <MyOrder />,
     },
