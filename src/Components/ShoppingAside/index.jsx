@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import ShoppingCard from "../ShoppingcCard";
 import "./styles.css";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 function ShoppingAside() {
   const {
@@ -31,7 +32,12 @@ function ShoppingAside() {
 
       <div className="px-1 flex-1">
         {shoppingCart.map((product) => (
-          <ShoppingCard key={uuidv4()} data={product} keyId={product.key} />
+          <ShoppingCard
+            key={uuidv4()}
+            data={product}
+            keyId={product.key}
+            hasCloseButton={true}
+          />
         ))}
       </div>
       <div className="px-6 mb-16">
@@ -43,12 +49,14 @@ function ShoppingAside() {
           <span className="font-light">Total:</span>
           <span className="font-medium text-2xl">$ {showTotal}</span>
         </p>
-        <button
-          className="w-full bg-black py-3 text-white rounded-lg"
-          onClick={handleCheckout}
-        >
-          Checkout
-        </button>
+        <Link to="/my-orders/last">
+          <button
+            className="w-full bg-black py-3 text-white rounded-lg"
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );

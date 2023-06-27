@@ -75,7 +75,7 @@ const ShoppingCartProvider = ({ children }) => {
     shoppingCart.reduce((total, product) => total + product.price, 0);
 
   // Orders • State:
-  const [order, setOrder] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   // Checkout Products:
   const handleCheckout = () => {
@@ -85,9 +85,10 @@ const ShoppingCartProvider = ({ children }) => {
       totalProducts: shoppingCart.length,
       totalPrice: showTotalPrice(),
     };
-    setOrder([...order, orderToAdd]);
+    setOrders([...orders, orderToAdd]);
     setShoppingCart([]);
-    console.log(order.length);
+    closeShoppingAside();
+    console.log(orders.length);
   };
 
   return (
@@ -108,6 +109,8 @@ const ShoppingCartProvider = ({ children }) => {
         removeFromShoppingCart,
         showTotalPrice,
         handleCheckout,
+        orders,
+        setOrders,
       }}
     >
       {children}

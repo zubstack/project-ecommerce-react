@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaTimes } from "react-icons/fa";
 import { ShoppingCartContext } from "../../Context";
 
-function ShoppingCard({ data }) {
+function ShoppingCard({ data, hasCloseButton }) {
   const { removeFromShoppingCart } = useContext(ShoppingCartContext);
 
   return (
@@ -19,10 +19,14 @@ function ShoppingCard({ data }) {
       </div>
       <div className="flex items-center gap-3">
         <p className="text-lg font-medium tx-price">$ {data.price}</p>
-        <FaTimes
-          className="h-3 w-3 text-black cursor-pointer mark-gray "
-          onClick={() => removeFromShoppingCart(data)}
-        ></FaTimes>
+        {hasCloseButton ? (
+          <FaTimes
+            className="h-3 w-3 text-black cursor-pointer mark-gray "
+            onClick={() => removeFromShoppingCart(data)}
+          ></FaTimes>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

@@ -21,6 +21,10 @@ function AppRoutes() {
       element: <MyAccount />,
     },
     {
+      path: "/my-orders/last",
+      element: <MyOrder />,
+    },
+    {
       path: "/my-order",
       element: <MyOrder />,
     },
