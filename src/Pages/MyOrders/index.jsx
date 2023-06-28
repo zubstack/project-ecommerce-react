@@ -7,7 +7,9 @@ function MyOrders() {
 
   return (
     <>
-      <h1 className="mb-6">My Orders</h1>
+      <div className="flex items-center justify-center relative w-80 mb-4">
+        <h1 className="font-medium text-xl">My Orders</h1>
+      </div>
 
       {orders?.map((order, index) => {
         return (

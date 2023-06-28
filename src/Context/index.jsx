@@ -98,6 +98,11 @@ const ShoppingCartProvider = ({ children }) => {
     console.log(orders.length);
   };
 
+  // User Search ♦:
+  //User input:
+
+  const [userInput, setUserInput] = useState("");
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -119,6 +124,8 @@ const ShoppingCartProvider = ({ children }) => {
         orders,
         setOrders,
         items,
+        userInput,
+        setUserInput,
       }}
     >
       {children}
