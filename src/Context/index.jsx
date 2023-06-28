@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 const ShoppingCartContext = createContext();
 import { v4 as uuidv4 } from "uuid";
 import useFetch from "../Hooks/useFetch";
@@ -100,8 +100,18 @@ const ShoppingCartProvider = ({ children }) => {
 
   // User Search ♦:
   //User input:
+  const [userInput, setUserInput] = useState(null);
+  const [filteredItems, setFilteredItems] = useState(null);
 
-  const [userInput, setUserInput] = useState("");
+  const filterItems = (items, userInput) => {
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(userInput.toLowerCase())
+    );
+  };
+
+  useEffect(() => {
+    if (userInput) setFilteredItems(filterItems(items, userInput));
+  }, [items, userInput]);
 
   return (
     <ShoppingCartContext.Provider
@@ -126,6 +136,7 @@ const ShoppingCartProvider = ({ children }) => {
         items,
         userInput,
         setUserInput,
+        filteredItems,
       }}
     >
       {children}

@@ -5,7 +5,18 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 
 function Home() {
-  const { items, userInput, setUserInput } = useContext(ShoppingCartContext);
+  const {
+    filteredItems: items,
+    userInput,
+    setUserInput,
+  } = useContext(ShoppingCartContext);
+  // const renderView = () => {
+  //   if (items.length > 0) {
+  //   return items.map((item) => <Card key={item.id} data={item} />);
+  //   } else {
+  //     return <p>No Results Found</p>;
+  //   }
+  // };
   return (
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-xl mb-4">Exclusive products</h1>
@@ -14,12 +25,11 @@ function Home() {
         type="text"
         placeholder="Search a product"
         onChange={(event) => {
-          setUserInput("Searched: " + event.target.value);
-          console.log(userInput);
+          setUserInput(event.target.value);
         }}
       />
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-        {items?.map((item) => (
+        {items.map((item) => (
           <Card key={item.id} data={item} />
         ))}
       </div>
