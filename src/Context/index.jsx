@@ -98,21 +98,6 @@ const ShoppingCartProvider = ({ children }) => {
     console.log(orders.length);
   };
 
-  // User Search ♦:
-  //User input:
-  // const [userInput, setUserInput] = useState("");
-  // const [filteredItems, setFilteredItems] = useState("");
-
-  // const filterItems = (items, userInput) => {
-  //   return items?.filter((item) =>
-  //     item.title.toLowerCase().includes(userInput.toLowerCase())
-  //   );
-  // };
-
-  // useEffect(() => {
-  //   if (userInput) setFilteredItems(filterItems(items, userInput));
-  // }, [items, userInput]);
-
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -134,9 +119,6 @@ const ShoppingCartProvider = ({ children }) => {
         orders,
         setOrders,
         items,
-        // userInput,
-        // setUserInput,
-        // filteredItems,
       }}
     >
       {children}

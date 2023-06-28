@@ -47,7 +47,9 @@ function Home() {
   };
   return (
     <div className="flex flex-col items-center text-center">
-      <h1 className="font-medium text-xl mb-4">Exclusive products</h1>
+      <h1 className="font-medium text-xl mb-4">
+        {currentPathIndex === "" ? "HOME" : currentPathIndex.toUpperCase()}
+      </h1>
       <input
         className="rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none"
         type="text"
