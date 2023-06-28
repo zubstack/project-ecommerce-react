@@ -100,18 +100,18 @@ const ShoppingCartProvider = ({ children }) => {
 
   // User Search ♦:
   //User input:
-  const [userInput, setUserInput] = useState("");
-  const [filteredItems, setFilteredItems] = useState("");
+  // const [userInput, setUserInput] = useState("");
+  // const [filteredItems, setFilteredItems] = useState("");
 
-  const filterItems = (items, userInput) => {
-    return items?.filter((item) =>
-      item.title.toLowerCase().includes(userInput.toLowerCase())
-    );
-  };
+  // const filterItems = (items, userInput) => {
+  //   return items?.filter((item) =>
+  //     item.title.toLowerCase().includes(userInput.toLowerCase())
+  //   );
+  // };
 
-  useEffect(() => {
-    if (userInput) setFilteredItems(filterItems(items, userInput));
-  }, [items, userInput]);
+  // useEffect(() => {
+  //   if (userInput) setFilteredItems(filterItems(items, userInput));
+  // }, [items, userInput]);
 
   return (
     <ShoppingCartContext.Provider
@@ -134,9 +134,9 @@ const ShoppingCartProvider = ({ children }) => {
         orders,
         setOrders,
         items,
-        userInput,
-        setUserInput,
-        filteredItems,
+        // userInput,
+        // setUserInput,
+        // filteredItems,
       }}
     >
       {children}

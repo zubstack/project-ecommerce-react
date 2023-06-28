@@ -21,7 +21,7 @@ let optionsLeft = [
     className: "",
   },
   {
-    to: "/furnitures",
+    to: "/furniture",
     text: "Furnitures",
     className: "",
   },
