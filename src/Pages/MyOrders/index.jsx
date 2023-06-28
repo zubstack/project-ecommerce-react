@@ -7,7 +7,7 @@ function MyOrders() {
 
   return (
     <>
-      <h1>My Orders</h1>
+      <h1 className="mb-6">My Orders</h1>
 
       {orders?.map((order, index) => {
         return (
