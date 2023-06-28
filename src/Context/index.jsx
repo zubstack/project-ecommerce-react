@@ -1,10 +1,15 @@
 import { createContext, useState } from "react";
 const ShoppingCartContext = createContext();
 import { v4 as uuidv4 } from "uuid";
+import useFetch from "../Hooks/useFetch";
+import { urlApi } from "../Data";
 
 const ShoppingCartProvider = ({ children }) => {
-  //Product Details ♦:
+  //Items from the API ♦:
 
+  const items = useFetch(`${urlApi}/products`);
+
+  //Product Details ♦:
   //State • Open/Close
   const [detailsOpen, setDetailsOpen] = useState(false);
 
@@ -113,6 +118,7 @@ const ShoppingCartProvider = ({ children }) => {
         handleCheckout,
         orders,
         setOrders,
+        items,
       }}
     >
       {children}

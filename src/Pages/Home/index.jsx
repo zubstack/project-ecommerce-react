@@ -1,13 +1,11 @@
-import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
-import useFetch from "../../Hooks/useFetch";
-import { urlApi } from "../../Data";
 import ProductDetail from "../../Components/ProductDetail";
 import ShoppingAside from "../../Components/ShoppingAside";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../Context";
 
 function Home() {
-  const items = useFetch(`${urlApi}/products`);
-
+  const { items } = useContext(ShoppingCartContext);
   return (
     <div className="flex flex-col item-center text-center">
       <h1>Home</h1>
