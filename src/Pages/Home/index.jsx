@@ -5,18 +5,17 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 
 function Home() {
-  const {
-    filteredItems: items,
-    userInput,
-    setUserInput,
-  } = useContext(ShoppingCartContext);
-  // const renderView = () => {
-  //   if (items.length > 0) {
-  //   return items.map((item) => <Card key={item.id} data={item} />);
-  //   } else {
-  //     return <p>No Results Found</p>;
-  //   }
-  // };
+  const { filteredItems, items, userInput, setUserInput } =
+    useContext(ShoppingCartContext);
+  const renderView = () => {
+    const itemsToRender = userInput.length > 0 ? filteredItems : items;
+
+    if (itemsToRender?.length > 0) {
+      return itemsToRender.map((item) => <Card key={item.id} data={item} />);
+    } else {
+      return <p>No Results Found</p>;
+    }
+  };
   return (
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-xl mb-4">Exclusive products</h1>
@@ -29,9 +28,7 @@ function Home() {
         }}
       />
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-        {items.map((item) => (
-          <Card key={item.id} data={item} />
-        ))}
+        {renderView()}
       </div>
       <ProductDetail />
       <ShoppingAside />

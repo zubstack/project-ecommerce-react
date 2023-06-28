@@ -100,8 +100,8 @@ const ShoppingCartProvider = ({ children }) => {
 
   // User Search ♦:
   //User input:
-  const [userInput, setUserInput] = useState(null);
-  const [filteredItems, setFilteredItems] = useState(null);
+  const [userInput, setUserInput] = useState("");
+  const [filteredItems, setFilteredItems] = useState("");
 
   const filterItems = (items, userInput) => {
     return items?.filter((item) =>
