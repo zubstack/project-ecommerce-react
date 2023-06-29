@@ -57,7 +57,7 @@ const ShoppingCartProvider = ({ children }) => {
     if (productIndex >= 0) {
       newShoppingCart = [...shoppingCart];
       newShoppingCart[productIndex].quantity++;
-      console.log(newShoppingCart[productIndex].quantity);
+      // console.log(newShoppingCart[productIndex].quantity);
       newShoppingCart[productIndex].price =
         newItem.price + newShoppingCart[productIndex].price;
     } else {
@@ -72,7 +72,7 @@ const ShoppingCartProvider = ({ children }) => {
     );
     let newShoppingCart = [...shoppingCart];
     newShoppingCart.splice([productIndex], 1);
-    console.log(newShoppingCart);
+    // console.log(newShoppingCart);
     setShoppingCart(newShoppingCart);
   };
 
@@ -95,7 +95,7 @@ const ShoppingCartProvider = ({ children }) => {
     setOrders([...orders, orderToAdd]);
     setShoppingCart([]);
     closeShoppingAside();
-    console.log(orders.length);
+    // console.log(orders.length);
   };
 
   // Local Storage ♦:

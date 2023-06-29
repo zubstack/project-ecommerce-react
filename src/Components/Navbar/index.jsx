@@ -74,8 +74,10 @@ function Navbar() {
     useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
 
-  // const parsedSignOut = JSON.stringify(localStorage.getItem("sign-out"));
-  // const isUserSignOut = signOut || parsedSignOut;
+  const parsedSignOut = JSON.parse(localStorage.getItem("sign-out"));
+  console.log(parsedSignOut);
+
+  const isUserSignOut = signOut || parsedSignOut;
 
   function handleSignOut() {
     const stringifiedSignOut = JSON.stringify(true);
@@ -84,7 +86,7 @@ function Navbar() {
   }
 
   function renderView() {
-    if (!signOut) {
+    if (!isUserSignOut) {
       return optionsRight.map((option) => {
         return (
           <li key={option.text}>
