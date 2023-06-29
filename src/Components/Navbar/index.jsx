@@ -3,6 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 import "./styles.css";
+import SignOut from "../../Pages/SignOut";
 
 let optionsLeft = [
   {
@@ -48,11 +49,12 @@ let optionsRight = [
     text: "My account",
     className: "",
   },
-  {
-    to: "/sign-in",
-    text: "Sign In",
-    className: "",
-  },
+  // {
+  //   to: "/sign-in",
+  //   text: "Sign Out",
+  //   className: "",
+
+  // },
 ];
 
 // eslint-disable-next-line react/prop-types
@@ -68,8 +70,15 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
-  const { shoppingCounter } = useContext(ShoppingCartContext);
+  const { shoppingCounter, setSignOut, signOut } =
+    useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
+
+  function handleSignOut() {
+    const stringifiedSignOut = JSON.stringify(true);
+    localStorage.setItem("sign-out", stringifiedSignOut);
+    setSignOut(true);
+  }
   return (
     <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white nav-text ">
       <ul className="flex items-center gap-3">
@@ -98,6 +107,15 @@ function Navbar() {
             </li>
           );
         })}
+        <li>
+          <NavLink
+            to={"/sign-in"}
+            // className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => handleSignOut()}
+          >
+            Sign Out
+          </NavLink>
+        </li>
         <li>
           <NavItem to={"/shop-cart"}>
             <div className="flex items-center gap-1">

@@ -98,6 +98,35 @@ const ShoppingCartProvider = ({ children }) => {
     console.log(orders.length);
   };
 
+  // Local Storage ♦:
+  //Values context (account, sign-out):
+  const [account, setAccount] = useState({});
+  const [signOut, setSignOut] = useState(false);
+  //Values in local storage (account, sign-out):
+  const initializeLocalStorage = () => {
+    //If there are something, it comes as a string
+    const accountInLocalStorage = localStorage.getItem("account");
+    const signOutLocalStorage = localStorage.getItem("sign-out");
+    let parsedAccount;
+    let parsedSignOut;
+
+    //If not, initialize this space in memory
+    if (!accountInLocalStorage) {
+      localStorage.setItem("account", JSON.stringify({}));
+      parsedAccount = {};
+    } else {
+      //But if we received a string, we tranform it into an object:
+      parsedAccount = JSON.parse(accountInLocalStorage);
+    }
+    if (!signOutLocalStorage) {
+      localStorage.setItem("sign-out", JSON.stringify(false));
+      parsedSignOut = false;
+    } else {
+      //But if we received a string, we tranform it into an object:
+      parsedSignOut = JSON.parse(signOutLocalStorage);
+    }
+  };
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -119,6 +148,10 @@ const ShoppingCartProvider = ({ children }) => {
         orders,
         setOrders,
         items,
+        account,
+        setAccount,
+        signOut,
+        setSignOut,
       }}
     >
       {children}
