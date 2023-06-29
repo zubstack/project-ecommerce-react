@@ -74,10 +74,29 @@ function Navbar() {
     useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
 
+  // const parsedSignOut = JSON.stringify(localStorage.getItem("sign-out"));
+  // const isUserSignOut = signOut || parsedSignOut;
+
   function handleSignOut() {
     const stringifiedSignOut = JSON.stringify(true);
     localStorage.setItem("sign-out", stringifiedSignOut);
     setSignOut(true);
+  }
+
+  function renderView() {
+    if (!signOut) {
+      return optionsRight.map((option) => {
+        return (
+          <li key={option.text}>
+            <NavItem to={option.to} activeStyle={activeStyle}>
+              {option.text}
+            </NavItem>
+          </li>
+        );
+      });
+    } else {
+      return;
+    }
   }
   return (
     <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white nav-text ">
@@ -98,15 +117,7 @@ function Navbar() {
       </ul>
       <ul className="flex items-center gap-3">
         <li className="text-black/60">example@gmail.com</li>
-        {optionsRight.map((option) => {
-          return (
-            <li key={option.text}>
-              <NavItem to={option.to} activeStyle={activeStyle}>
-                {option.text}
-              </NavItem>
-            </li>
-          );
-        })}
+        {renderView()}
         <li>
           <NavLink
             to={"/sign-in"}
