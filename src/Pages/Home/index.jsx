@@ -20,7 +20,7 @@ function Home() {
 
   const itemsByCategory = filterByCategory();
 
-  console.log(itemsByCategory);
+  // console.log(itemsByCategory);
 
   const [userInput, setUserInput] = useState("");
   const [filteredItems, setFilteredItems] = useState("");

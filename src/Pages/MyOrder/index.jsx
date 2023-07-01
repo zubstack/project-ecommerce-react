@@ -9,7 +9,7 @@ function MyOrder() {
   const currentPath = window.location.pathname;
   let index = currentPath.substring(currentPath.lastIndexOf("/") + 1);
   if (index === "last") index = orders?.length - 1;
-  console.log(index);
+  // console.log(index);
 
   return (
     <>
