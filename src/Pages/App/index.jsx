@@ -1,4 +1,4 @@
-import { useRoutes, BrowserRouter } from "react-router-dom";
+import { useRoutes, BrowserRouter, Navigate } from "react-router-dom";
 import Home from "../Home";
 import MyAccount from "../MyAccount";
 import MyOrder from "../MyOrder";
@@ -8,17 +8,19 @@ import SignIn from "../SignIn";
 import SignOut from "../SignOut";
 import Navbar from "../../Components/Navbar";
 import Layout from "../../Components/Layout";
-import { ShoppingCartProvider } from "../../Context";
+import { ShoppingCartContext, ShoppingCartProvider } from "../../Context";
+import { useContext } from "react";
 
 function AppRoutes() {
+  const { isUserSignOut } = useContext(ShoppingCartContext);
   let routes = useRoutes([
     {
       path: "/",
-      element: <Home />,
+      element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
     },
     {
       path: "/:category",
-      element: <Home />,
+      element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
     },
 
     {

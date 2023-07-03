@@ -124,7 +124,7 @@ function Navbar() {
             // className={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={() => handleSignOut()}
           >
-            {signOut ? "Sign In" : "Sign Out"}
+            {parsedSignOut ? "Sign In" : "Sign Out"}
           </NavLink>
         </li>
         <li>
