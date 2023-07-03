@@ -3,7 +3,6 @@ import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 import "./styles.css";
-import SignOut from "../../Pages/SignOut";
 
 let optionsLeft = [
   {
@@ -70,12 +69,9 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
-  const { shoppingCounter, setSignOut, signOut } =
+  const { shoppingCounter, setSignOut, signOut, parsedSignOut } =
     useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
-
-  const parsedSignOut = JSON.parse(localStorage.getItem("sign-out"));
-  // console.log(parsedSignOut);
 
   const isUserSignOut = signOut || parsedSignOut;
 
