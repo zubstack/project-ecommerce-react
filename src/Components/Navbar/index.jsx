@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 import "./styles.css";
+import ShoppingCart from "../ShoppingCart";
 
 let optionsLeft = [
   {
@@ -69,7 +69,7 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
-  const { shoppingCounter, setSignOut, signOut, parsedSignOut, isUserSignOut } =
+  const { setSignOut, signOut, parsedSignOut, isUserSignOut, parsedAccount } =
     useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
 
@@ -115,7 +115,7 @@ function Navbar() {
         {isUserSignOut ? (
           ""
         ) : (
-          <li className="text-black/60">example@gmail.com</li>
+          <li className="text-black/60">{parsedAccount?.email}</li>
         )}
         {renderView()}
         <li>
@@ -129,10 +129,7 @@ function Navbar() {
         </li>
         <li>
           <NavItem to={"/shop-cart"}>
-            <div className="flex items-center gap-1">
-              <FaShoppingCart />
-              <span className="button__badge">{shoppingCounter}</span>
-            </div>
+            <ShoppingCart />
           </NavItem>
         </li>
       </ul>
