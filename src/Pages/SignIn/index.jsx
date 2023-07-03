@@ -147,7 +147,7 @@ function SignIn() {
           type="submit"
           onClick={onSubmit}
         >
-          Create new account
+          <Link to="/">Create new account</Link>
         </button>
       </form>
     );
