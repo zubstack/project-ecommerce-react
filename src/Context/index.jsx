@@ -127,6 +127,9 @@ const ShoppingCartProvider = ({ children }) => {
     }
   };
 
+  //Log In or Sign Up View ♦:
+  const [view, setView] = useState("");
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -152,6 +155,8 @@ const ShoppingCartProvider = ({ children }) => {
         setAccount,
         signOut,
         setSignOut,
+        view,
+        setView,
       }}
     >
       {children}
