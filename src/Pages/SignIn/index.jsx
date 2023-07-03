@@ -1,9 +1,12 @@
-import { useContext, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useRef, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 
 function SignIn() {
-  const { account, view, setView } = useContext(ShoppingCartContext);
+  const { account, setAccount, signOut, setSignOut } =
+    useContext(ShoppingCartContext);
+  const [view, setView] = useState("");
+
   const parsedAccount = JSON.parse(localStorage.getItem("account"));
   //If parsedAccount exists, it checks if it is an empty object by comparing the length of its keys to 0 using Object.keys(parsedAccount).length === 0.
   //If parsedAccount does not exist, it sets noAccountinLocalStorage to true.
@@ -17,6 +20,12 @@ function SignIn() {
     : true;
 
   const hasUserAccount = !noAccountinLocalState || !noAccountinLocalStorage;
+
+  function handleLogIn() {
+    localStorage.setItem("sign-out", false);
+    setSignOut(false);
+    return <Navigate replace to={"/"} />;
+  }
   function renderLogIn() {
     return (
       <div className="flex flex-col w-80">
@@ -27,7 +36,7 @@ function SignIn() {
           className="p-1"
           type="text"
           name="user-name"
-          value={parsedAccount?.user}
+          value={parsedAccount?.name}
         />
         <label className="py-2" htmlFor="user-password">
           Password:{" "}
@@ -43,6 +52,7 @@ function SignIn() {
           <button
             className="bg-black disabled:bg-black/40 text-white w-full rounded-lg py-3 mt-4 mb-2"
             disabled={!hasUserAccount}
+            onClick={handleLogIn}
           >
             Log In
           </button>
@@ -70,11 +80,6 @@ function SignIn() {
   //Form Validation:
 
   const isEmpty = (arr, form) => {
-    //running loop to check
-    //if a field is empty in form or not.
-    //if any field is empty return true
-    //else return false.
-
     for (const key of arr) {
       if (form[key].value == "") {
         return true;
@@ -84,21 +89,29 @@ function SignIn() {
     return false;
   };
 
-  // Form - Collect dat:
+  // Form - Collect data:
 
   const formData = useRef();
 
   const onSubmit = (event) => {
     event.preventDefault();
-
     const { name, email, password } = formData.current;
+    const dataUser = {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    };
 
     if (isEmpty(["name", "email", "password"], formData.current)) {
       console.log("Error: Something is empty");
     } else {
-      console.log(
-        `Name : ${name.value}, Email : ${email.value}, Password : ${password.value}`
-      );
+      setAccount(dataUser);
+      setView("");
+      localStorage.setItem("account", JSON.stringify(dataUser));
+
+      console.log(account);
+      console.log(signOut);
+      handleLogIn();
     }
   };
 
@@ -147,7 +160,8 @@ function SignIn() {
           type="submit"
           onClick={onSubmit}
         >
-          Create new account
+          {" "}
+          <Link to={"/"}>Create new account</Link>
         </button>
       </form>
     );

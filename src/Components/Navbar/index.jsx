@@ -75,7 +75,7 @@ function Navbar() {
   let activeStyle = "underline underline-offset-4";
 
   const parsedSignOut = JSON.parse(localStorage.getItem("sign-out"));
-  console.log(parsedSignOut);
+  // console.log(parsedSignOut);
 
   const isUserSignOut = signOut || parsedSignOut;
 
@@ -86,19 +86,19 @@ function Navbar() {
   }
 
   function renderView() {
-    if (!isUserSignOut) {
-      return optionsRight.map((option) => {
-        return (
-          <li key={option.text}>
-            <NavItem to={option.to} activeStyle={activeStyle}>
-              {option.text}
-            </NavItem>
-          </li>
-        );
-      });
-    } else {
+    if (isUserSignOut) {
       return;
     }
+
+    return optionsRight.map((option) => {
+      return (
+        <li key={option.text}>
+          <NavItem to={option.to} activeStyle={activeStyle}>
+            {option.text}
+          </NavItem>
+        </li>
+      );
+    });
   }
   return (
     <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white nav-text ">
@@ -118,7 +118,11 @@ function Navbar() {
         })}
       </ul>
       <ul className="flex items-center gap-3">
-        <li className="text-black/60">example@gmail.com</li>
+        {isUserSignOut ? (
+          ""
+        ) : (
+          <li className="text-black/60">example@gmail.com</li>
+        )}
         {renderView()}
         <li>
           <NavLink
