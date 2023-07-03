@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 
@@ -67,8 +67,90 @@ function SignIn() {
     );
   }
 
+  //Form Validation:
+
+  const isEmpty = (arr, form) => {
+    //running loop to check
+    //if a field is empty in form or not.
+    //if any field is empty return true
+    //else return false.
+
+    for (const key of arr) {
+      if (form[key].value == "") {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  // Form - Collect dat:
+
+  const formData = useRef();
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const { name, email, password } = formData.current;
+
+    if (isEmpty(["name", "email", "password"], formData.current)) {
+      console.log("Error: Something is empty");
+    } else {
+      console.log(
+        `Name : ${name.value}, Email : ${email.value}, Password : ${password.value}`
+      );
+    }
+  };
+
   function renderCreateNewUser() {
-    return <h1>Create a new user!</h1>;
+    return (
+      <form
+        ref={formData}
+        className="flex flex-col w-80"
+        // onSubmit={(event) => handleSubmit(event)}
+      >
+        <label htmlFor="user-name">User name:</label>
+        <input
+          placeholder="Marco"
+          className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/50 focus:outline-none py-2 px-2 "
+          type="text"
+          name="name"
+          id="user-name"
+        />
+
+        <label htmlFor="user-email">Email:</label>
+        <input
+          placeholder="name@example.com"
+          className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/50 focus:outline-none py-2 px-2 "
+          type="email"
+          name="email"
+          id="user-email"
+        />
+
+        <label htmlFor="user-password">Create a password:</label>
+        <input
+          className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/50 focus:outline-none py-2 px-2 "
+          type="password"
+          name="password"
+          id="user-password"
+        />
+        <label htmlFor="user-password_confirm">Repeat Password:</label>
+        <input
+          className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/50 focus:outline-none py-2 px-2 "
+          type="password"
+          name="user-password_confirm"
+          id="user-password_confirm"
+        />
+
+        <button
+          className="bg-black disabled:bg-black/40 text-white w-full rounded-lg py-3 mt-10"
+          type="submit"
+          onClick={onSubmit}
+        >
+          Create new account
+        </button>
+      </form>
+    );
   }
 
   function renderView() {

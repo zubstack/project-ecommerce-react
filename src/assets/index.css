@@ -22,3 +22,12 @@
 /* * {
   border: 1px solid brown;
 } */
+
+label {
+  padding: 10px 3px;
+}
+
+input {
+  padding: 5px;
+  font-size: 12px;
+}
