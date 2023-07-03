@@ -69,11 +69,9 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
-  const { shoppingCounter, setSignOut, signOut, parsedSignOut } =
+  const { shoppingCounter, setSignOut, signOut, parsedSignOut, isUserSignOut } =
     useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
-
-  const isUserSignOut = signOut || parsedSignOut;
 
   function handleSignOut() {
     const stringifiedSignOut = JSON.stringify(true);
@@ -126,7 +124,7 @@ function Navbar() {
             // className={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={() => handleSignOut()}
           >
-            Sign Out
+            {signOut ? "Sign In" : "Sign Out"}
           </NavLink>
         </li>
         <li>

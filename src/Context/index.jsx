@@ -122,7 +122,16 @@ const ShoppingCartProvider = ({ children }) => {
     parsedSignOut = JSON.parse(signOutLocalStorage);
   }
 
-  //Log In or Sign Up View ♦:
+  const noAccountinLocalStorage = parsedAccount
+    ? Object.keys(parsedAccount).length === 0
+    : true;
+
+  const noAccountinLocalState = account
+    ? Object.keys(account).length === 0
+    : true;
+
+  const hasUserAccount = !noAccountinLocalState || !noAccountinLocalStorage;
+  const isUserSignOut = signOut || parsedSignOut;
 
   return (
     <ShoppingCartContext.Provider
@@ -151,6 +160,8 @@ const ShoppingCartProvider = ({ children }) => {
         setSignOut,
         parsedAccount,
         parsedSignOut,
+        hasUserAccount,
+        isUserSignOut,
       }}
     >
       {children}

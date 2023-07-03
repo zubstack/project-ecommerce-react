@@ -3,19 +3,15 @@ import { Link, Navigate } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 
 function SignIn() {
-  const { account, setAccount, signOut, setSignOut, parsedAccount } =
-    useContext(ShoppingCartContext);
+  const {
+    account,
+    setAccount,
+    signOut,
+    setSignOut,
+    parsedAccount,
+    hasUserAccount,
+  } = useContext(ShoppingCartContext);
   const [view, setView] = useState("");
-
-  const noAccountinLocalStorage = parsedAccount
-    ? Object.keys(parsedAccount).length === 0
-    : true;
-
-  const noAccountinLocalState = account
-    ? Object.keys(account).length === 0
-    : true;
-
-  const hasUserAccount = !noAccountinLocalState || !noAccountinLocalStorage;
 
   function handleLogIn() {
     localStorage.setItem("sign-out", false);
@@ -67,7 +63,7 @@ function SignIn() {
           onClick={() => setView("create-user-info")}
         >
           {" "}
-          Sing Up
+          Sign Up
         </button>
       </div>
     );
