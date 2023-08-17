@@ -1,4 +1,5 @@
-# pj-ecommerce-react
+# Project: E-commerce with React
+
 E-commerce React - React js, Vite and Tailwind CSS
 Is a real-life shop interface and reflects hours of code and learning.
 This fronted project allows the user the following actions:
