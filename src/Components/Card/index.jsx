@@ -45,7 +45,7 @@ function Card({ data }) {
         <span className="card-span text-sm font-light tx-title">
           {data.title}
         </span>
-        <span className="card-span text-lg font-medium tx-price">
+        <span className="card-span text-lg font-medium tx-price min-w-[50px]">
           $ {data.price}
         </span>
       </p>

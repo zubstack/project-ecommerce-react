@@ -3,8 +3,15 @@ import ProductDetail from "../../Components/ProductDetail";
 import ShoppingAside from "../../Components/ShoppingAside";
 import { useContext, useEffect, useState } from "react";
 import { ShoppingCartContext } from "../../Context";
+import productServices from "../../services/products";
 
 function Home() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    productServices.getAll().then((data) => setProducts(data));
+  }, []);
+
+  console.log("products", products);
   const { items } = useContext(ShoppingCartContext);
 
   const currentPath = window.location.pathname;
