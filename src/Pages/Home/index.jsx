@@ -12,42 +12,44 @@ function Home() {
   }, []);
 
   console.log("products", products);
-  const { items } = useContext(ShoppingCartContext);
 
+  //Products by category: [categoryProducts]
+  //Read from path:
   const currentPath = window.location.pathname;
   let currentPathIndex = currentPath.substring(
     currentPath.lastIndexOf("/") + 1
   );
+  //Choose the appropiate products:
+  const categoryProducts = products?.filter((item) =>
+    item.category.name.toLowerCase().includes(currentPathIndex)
+  );
 
-  const filterByCategory = () => {
-    return items?.filter((item) =>
-      item.category.name.toLowerCase().includes(currentPathIndex)
-    );
-  };
-
-  const itemsByCategory = filterByCategory();
-
-  // console.log(itemsByCategory);
-
+  //Products by user filter: [filteredProducts]
   const [userInput, setUserInput] = useState("");
-  const [filteredItems, setFilteredItems] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState("");
 
-  const filterItems = (items, userInput) => {
-    return items?.filter((item) =>
+  //Selection:
+  const filterItems = (userInput) => {
+    return products?.filter((item) =>
       item.title.toLowerCase().includes(userInput.toLowerCase())
     );
   };
-
+  //Setting (if user inputs):
   useEffect(() => {
-    if (userInput) setFilteredItems(filterItems(itemsByCategory, userInput));
-  }, [itemsByCategory, userInput]);
+    if (userInput) setFilteredProducts(filterItems(userInput));
+  }, [categoryProducts, userInput]);
+
+  //Render functions:
 
   const renderView = () => {
-    const itemsToRender =
-      userInput.length > 0 ? filteredItems : itemsByCategory;
+    const productsToRender =
+      userInput.length > 0 ? filteredProducts : categoryProducts;
 
-    if (itemsToRender?.length > 0) {
-      return itemsToRender.map((item) => <Card key={item.id} data={item} />);
+    //Problem: Path category - All category is valid
+    // If a category doesnt have items, should be display "New items here soon..."
+
+    if (productsToRender?.length > 0) {
+      return productsToRender.map((item) => <Card key={item.id} data={item} />);
     } else {
       return <p>No Results Found</p>;
     }
@@ -65,6 +67,9 @@ function Home() {
           setUserInput(event.target.value);
         }}
       />
+      <i className="p-10 bg-slate-500 mb-10">
+        Semanal Offerts Section From 1 to 4 Agout 50% OFF (pending)
+      </i>
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {renderView()}
       </div>
