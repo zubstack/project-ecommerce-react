@@ -12,27 +12,27 @@ let optionsLeft = [
     className: "",
   },
   {
-    to: "/clothes",
+    to: "/category/clothes",
     text: "Clothes",
     className: "",
   },
   {
-    to: "/electronics",
+    to: "/category/electronics",
     text: "Electronics",
     className: "",
   },
   {
-    to: "/furniture",
+    to: "/category/furniture",
     text: "Furnitures",
     className: "",
   },
   {
-    to: "/toys",
+    to: "/category/toys",
     text: "Toys",
     className: "",
   },
   {
-    to: "/others",
+    to: "/category/others",
     text: "Others",
     className: "",
   },
@@ -132,8 +132,6 @@ function Navbar() {
             onClick={() => handleSignOut()}
           >
             {parsedSignOut ? "Sign In" : "Sign Out"}
-
-            {/* {hasUserAccount && parsedSignOut ? "" : "SignIn"} */}
           </NavLink>
         </li>
         <li>

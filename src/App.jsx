@@ -19,7 +19,7 @@ function AppRoutes() {
       element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
     },
     {
-      path: "/:category",
+      path: "/category/:category",
       element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
     },
 

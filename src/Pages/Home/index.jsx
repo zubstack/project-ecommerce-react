@@ -1,24 +1,45 @@
 import Card from "../../Components/Card";
 import ProductDetail from "../../Components/ProductDetail";
 import ShoppingAside from "../../Components/ShoppingAside";
-import { useContext, useEffect, useState } from "react";
-import { ShoppingCartContext } from "../../Context";
+import { useEffect, useState } from "react";
 import productServices from "../../services/products";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const categoriesList = [
+    "clothes",
+    "furniture",
+    "electronics",
+    "toys",
+    "others",
+  ];
+
+  const navigate = useNavigate();
+
+  //Read current category from path:
+  const currentPath = window.location.pathname;
+  let currentPathIndex = currentPath.substring(
+    currentPath.lastIndexOf("/") + 1
+  );
+
+  // Verify validation of the current catery:
+
+  useEffect(() => {
+    categoriesList.includes(currentPathIndex) || currentPathIndex == "" ? (
+      <Home />
+    ) : (
+      navigate("/category/not-found")
+    );
+  }, []);
+
+  //Products: ==============================================================
+
   const [products, setProducts] = useState([]);
   useEffect(() => {
     productServices.getAll().then((data) => setProducts(data));
   }, []);
 
-  console.log("products", products);
-
   //Products by category: [categoryProducts] =============================
-  //Read from path:
-  const currentPath = window.location.pathname;
-  let currentPathIndex = currentPath.substring(
-    currentPath.lastIndexOf("/") + 1
-  );
   //Choose the appropiate products:
   const categoryProducts = products?.filter((item) =>
     item.category.name.toLowerCase().includes(currentPathIndex)
