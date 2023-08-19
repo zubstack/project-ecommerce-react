@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 import "./styles.css";
 import ShoppingCart from "../ShoppingCart";
+import SignIn from "../../Pages/SignIn";
 
 let optionsLeft = [
   {
@@ -69,8 +70,14 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
-  const { setSignOut, signOut, parsedSignOut, isUserSignOut, parsedAccount } =
-    useContext(ShoppingCartContext);
+  const {
+    setSignOut,
+    signOut,
+    parsedSignOut,
+    isUserSignOut,
+    account,
+    hasUserAccount,
+  } = useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
 
   function handleSignOut() {
@@ -115,7 +122,7 @@ function Navbar() {
         {isUserSignOut ? (
           ""
         ) : (
-          <li className="text-black/60">{parsedAccount?.email}</li>
+          <li className="text-black/60">{account?.email}</li>
         )}
         {renderView()}
         <li>
@@ -125,6 +132,8 @@ function Navbar() {
             onClick={() => handleSignOut()}
           >
             {parsedSignOut ? "Sign In" : "Sign Out"}
+
+            {/* {hasUserAccount && parsedSignOut ? "" : "SignIn"} */}
           </NavLink>
         </li>
         <li>
@@ -136,5 +145,7 @@ function Navbar() {
     </nav>
   );
 }
+
+//PENDING: "Sign in" avaible to modify the account in Local Storage
 
 export default Navbar;

@@ -1,19 +1,14 @@
-import { useContext } from "react";
-import { ShoppingCartContext } from "../../Context";
-import { FaTimes } from "react-icons/fa";
-import ShoppingCard from "../ShoppingcCard";
 import "./styles.css";
-import { v4 as uuidv4 } from "uuid";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { FaChevronCircleRight } from "react-icons/fa";
+import { ShoppingCartContext } from "../../Context";
+import ShoppingCard from "../ShoppingCard";
+import { v4 as uuidv4 } from "uuid";
 
-function ShoppingAside() {
-  const {
-    closeShoppingAside,
-    shoppingOpen,
-    shoppingCart,
-    showTotalPrice,
-    handleCheckout,
-  } = useContext(ShoppingCartContext);
+function ShoppingAside({ closeShoppingAside, shoppingOpen }) {
+  const { shoppingCart, showTotalPrice, handleCheckout } =
+    useContext(ShoppingCartContext);
 
   let showTotal = showTotalPrice();
 
@@ -26,7 +21,7 @@ function ShoppingAside() {
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xt">My order</h2>
         <button>
-          <FaTimes onClick={() => closeShoppingAside()} />
+          <FaChevronCircleRight onClick={() => closeShoppingAside()} />
         </button>
       </div>
 

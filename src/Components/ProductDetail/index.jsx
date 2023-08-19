@@ -1,10 +1,10 @@
-import { FaTimes } from "react-icons/fa";
+import { FaChevronCircleRight } from "react-icons/fa";
 import "./styles.css";
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
-function ProductDetail() {
-  const { closeProductDetails, detailsOpen, productToShow } =
-    useContext(ShoppingCartContext);
+function ProductDetail({ closeProductDetails, detailsOpen }) {
+  const { productOnDetails } = useContext(ShoppingCartContext);
+  //PENDING: Details smooth appearing [absolute]
   return (
     <aside
       className={`product-detail ${
@@ -14,26 +14,26 @@ function ProductDetail() {
       <div className="flex justify-between items-center p-4">
         <h2 className="font-medium text-xt">Details</h2>
         <button>
-          <FaTimes onClick={() => closeProductDetails()} />
+          <FaChevronCircleRight onClick={closeProductDetails} />
         </button>
       </div>
       <div className="bg-white cursor-pointer w-full h-4/5 p-5">
         <figure className="relative mb-2 w-full h-3/5">
           <img
             className="w-full h-full object-cover rounded-lg"
-            src={productToShow.images[0]}
+            src={productOnDetails.images[0]}
             alt="headphone"
           />
         </figure>
         <p className="flex justify-between items-center px-3 py-3">
           <span className="card-span text-lg font-medium tx-title">
-            {productToShow.title}
+            {productOnDetails.title}
           </span>
           <span className="card-span text-2xl font-medium tx-price">
-            $ {productToShow.price}
+            $ {productOnDetails.price}
           </span>
         </p>
-        <p className="text-start">{productToShow.description}</p>
+        <p className="text-start">{productOnDetails.description}</p>
       </div>
     </aside>
   );

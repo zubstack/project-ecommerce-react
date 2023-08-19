@@ -56,6 +56,20 @@ function SignIn() {
           >
             Forgot my password
           </a>
+          {hasUserAccount ? (
+            ""
+          ) : (
+            <a
+              className="font-light text-xs underline underline-offset-4 ml-10"
+              href=""
+              onClick={(ev) => {
+                ev.preventDefault();
+                setView("create-user-info");
+              }}
+            >
+              No account? &nbsp;Register
+            </a>
+          )}
         </div>
         <button
           className="border border-black disabled:text-black/40 disabled:border-black/40 rounded-lg mt-6 py-3"
@@ -63,7 +77,7 @@ function SignIn() {
           onClick={() => setView("create-user-info")}
         >
           {" "}
-          Sign Up
+          Register{" "}
         </button>
       </div>
     );

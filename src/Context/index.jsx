@@ -1,42 +1,18 @@
 import { createContext, useEffect, useState } from "react";
-const ShoppingCartContext = createContext();
 import { v4 as uuidv4 } from "uuid";
-import useFetch from "../Hooks/useFetch";
-import { urlApi } from "../Data";
+
+const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = ({ children }) => {
-  //Items from the API ♦:
-
-  const items = useFetch(`${urlApi}/products`);
-
-  //Product Details ♦:
-  //State • Open/Close
-  const [detailsOpen, setDetailsOpen] = useState(false);
-
-  // Functions • Open/Close
-
-  const openProductDetails = () => setDetailsOpen(true);
-  const closeProductDetails = () => setDetailsOpen(false);
-
-  const [productToShow, setProductToShow] = useState({
+  //Product on Details : ================================================
+  const [productOnDetails, setproductOnDetails] = useState({
     title: "",
     price: "",
     description: "",
     images: [],
   });
 
-  //Shopping Aside ♦:
-
-  //State • Open/Close
-
-  const [shoppingOpen, setShoppingOpen] = useState(false);
-
-  // Functions • Open/Close
-
-  const openShoppingAside = () => setShoppingOpen(true);
-  const closeShoppingAside = () => setShoppingOpen(false);
-
-  //Shopping Cart & Counter
+  //Shopping Cart & Counter ============================================
 
   const [shoppingCart, setShoppingCart] = useState([]);
   const shoppingCounter = shoppingCart.length;
@@ -47,7 +23,7 @@ const ShoppingCartProvider = ({ children }) => {
     product.key = uuidv4();
   });
 
-  //Shopping Aide • CRUD:
+  //Shopping Aside • CRUD:
 
   const addToShoppingCart = (newItem) => {
     const productIndex = shoppingCart.findIndex(
@@ -57,7 +33,6 @@ const ShoppingCartProvider = ({ children }) => {
     if (productIndex >= 0) {
       newShoppingCart = [...shoppingCart];
       newShoppingCart[productIndex].quantity++;
-      // console.log(newShoppingCart[productIndex].quantity);
       newShoppingCart[productIndex].price =
         newItem.price + newShoppingCart[productIndex].price;
     } else {
@@ -72,14 +47,13 @@ const ShoppingCartProvider = ({ children }) => {
     );
     let newShoppingCart = [...shoppingCart];
     newShoppingCart.splice([productIndex], 1);
-    // console.log(newShoppingCart);
     setShoppingCart(newShoppingCart);
   };
 
   const showTotalPrice = () =>
     shoppingCart.reduce((total, product) => total + product.price, 0);
 
-  // Orders • State:
+  // Orders: =====================================================
   const [orders, setOrders] = useState([]);
 
   // Checkout Products:
@@ -94,16 +68,15 @@ const ShoppingCartProvider = ({ children }) => {
     };
     setOrders([...orders, orderToAdd]);
     setShoppingCart([]);
-    closeShoppingAside();
+    // closeShoppingAside();
     // console.log(orders.length);
   };
 
-  // Local Storage ♦:
-  //Values context (account, sign-out):
+  // Local Storage: =============================================
+
   const [account, setAccount] = useState({});
   const [signOut, setSignOut] = useState(false);
-  //Values in local storage (account, sign-out):
-  // const initializeLocalStorage = () => {
+
   const accountInLocalStorage = localStorage.getItem("account");
   const signOutLocalStorage = localStorage.getItem("sign-out");
   let parsedAccount;
@@ -116,11 +89,18 @@ const ShoppingCartProvider = ({ children }) => {
     parsedAccount = JSON.parse(accountInLocalStorage);
   }
   if (!signOutLocalStorage) {
-    localStorage.setItem("sign-out", JSON.stringify(false));
-    parsedSignOut = false;
+    localStorage.setItem("sign-out", JSON.stringify(true));
+    parsedSignOut = true;
   } else {
     parsedSignOut = JSON.parse(signOutLocalStorage);
   }
+
+  // parsedAccount => To remember user after refresh
+  //account => To the logic around the user data
+
+  useEffect(() => {
+    setAccount(parsedAccount);
+  }, []);
 
   const noAccountinLocalStorage = parsedAccount
     ? Object.keys(parsedAccount).length === 0
@@ -136,24 +116,20 @@ const ShoppingCartProvider = ({ children }) => {
   return (
     <ShoppingCartContext.Provider
       value={{
+        productOnDetails,
+        setproductOnDetails,
+
         shoppingCounter,
-        detailsOpen,
-        openProductDetails,
-        closeProductDetails,
-        productToShow,
-        setProductToShow,
         shoppingCart,
         setShoppingCart,
-        openShoppingAside,
-        closeShoppingAside,
-        shoppingOpen,
         addToShoppingCart,
         removeFromShoppingCart,
         showTotalPrice,
-        handleCheckout,
+
         orders,
         setOrders,
-        items,
+        handleCheckout,
+
         account,
         setAccount,
         signOut,

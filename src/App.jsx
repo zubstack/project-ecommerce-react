@@ -3,13 +3,13 @@ import { ShoppingCartContext, ShoppingCartProvider } from "./Context";
 import { BrowserRouter, Navigate, useRoutes } from "react-router-dom";
 import Home from "./Pages/Home";
 import MyAccount from "./Pages/MyAccount";
-import MyOrder from "./Pages/MyOrder";
 import MyOrders from "./Pages/MyOrders";
 import SignIn from "./Pages/SignIn";
 import SignOut from "./Pages/SignOut";
 import NotFound from "./Pages/NotFound";
 import Navbar from "./Components/Navbar";
 import Layout from "./Components/Layout";
+import OrderView from "./Pages/OrderView";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);
@@ -29,15 +29,15 @@ function AppRoutes() {
     },
     {
       path: "/my-orders/last",
-      element: <MyOrder />,
+      element: <OrderView />,
     },
     {
       path: "/my-orders/:id",
-      element: <MyOrder />,
+      element: <OrderView />,
     },
     {
       path: "/my-order",
-      element: <MyOrder />,
+      element: <OrderView />,
     },
     {
       path: "/my-orders",

@@ -2,17 +2,13 @@ import { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
 import { ShoppingCartContext } from "../../Context";
 
-function Card({ data }) {
-  let {
-    openProductDetails,
-    setProductToShow,
-    addToShoppingCart,
-    openShoppingAside,
-  } = useContext(ShoppingCartContext);
+function Card({ data, openProductDetails, openShoppingAside }) {
+  let { setproductOnDetails, addToShoppingCart } =
+    useContext(ShoppingCartContext);
 
   const showProductDetails = () => {
     openProductDetails();
-    setProductToShow(data);
+    setproductOnDetails(data);
   };
 
   return (
