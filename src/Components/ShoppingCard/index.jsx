@@ -6,7 +6,7 @@ function ShoppingCard({ data, hasCloseButton }) {
   const { removeFromShoppingCart } = useContext(ShoppingCartContext);
 
   return (
-    <div className="flex justify-between items-center mb-3">
+    <div className="flex justify-between items-center mb-3 ">
       <div className="flex items-center gap-2">
         <figure className="w-20 h-20">
           <img
@@ -15,9 +15,9 @@ function ShoppingCard({ data, hasCloseButton }) {
             alt=""
           />
         </figure>
-        <p className="text-sm font-light text-center">{data.title}</p>
+        <p className="text-sm font-light text-center mr-10">{data.title}</p>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center">
         <p className="text-lg font-medium tx-price">$ {data.price}</p>
         {hasCloseButton ? (
           <FaMinusCircle

@@ -10,6 +10,7 @@ import NotFound from "./Pages/NotFound";
 import Navbar from "./Components/Navbar";
 import Layout from "./Components/Layout";
 import OrderView from "./Pages/OrderView";
+import "./App.css";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);

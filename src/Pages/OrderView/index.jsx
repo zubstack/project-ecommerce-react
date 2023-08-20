@@ -9,7 +9,6 @@ function OrderView() {
   const currentPath = window.location.pathname;
   let index = currentPath.substring(currentPath.lastIndexOf("/") + 1);
   if (index === "last") index = orders?.length - 1;
-  // console.log(index);
 
   return (
     <>
@@ -19,7 +18,7 @@ function OrderView() {
         </Link>
         <h1>Factura</h1>
       </div>
-      <div>
+      <div className="w-[500px] border-2 border-black/70 p-6">
         {orders?.[index]?.products.map((product) => (
           <ShoppingCard key={product.key} data={product} keyId={product.key} />
         ))}
