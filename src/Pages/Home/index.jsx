@@ -82,6 +82,7 @@ function Home() {
     //PENDING: If a category doesnt have items, should be display "New items here soon..."
     //PENDING: Semanal offerts
     //PENDING: Loading state
+    //PENDING: Scroll bar
     if (productsToRender?.length > 0) {
       return productsToRender.map((item) => (
         <Card
