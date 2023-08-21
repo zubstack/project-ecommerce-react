@@ -13,7 +13,7 @@ function Card({ data, openProductDetails, openShoppingAside }) {
 
   return (
     <div
-      className="bg-white cursor-pointer w-56 h-60"
+      className="bg-white/10 cursor-pointer w-60 h-60 border border-black/40 rounded-lg p-2"
       onClick={showProductDetails}
     >
       <figure className="relative mb-2 w-full h-4/5">
@@ -32,7 +32,7 @@ function Card({ data, openProductDetails, openShoppingAside }) {
             addToShoppingCart(data);
             openShoppingAside();
           }}
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 "
         >
           <FaPlus className="text-sm" />
         </button>
