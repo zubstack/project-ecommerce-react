@@ -4,6 +4,7 @@ import ShoppingAside from "../../Components/ShoppingAside";
 import { useEffect, useState } from "react";
 import productServices from "../../services/products";
 import { useNavigate } from "react-router-dom";
+import PromotionCard from "../../Components/PromotionCard";
 
 function Home() {
   const categoriesList = [
@@ -97,6 +98,11 @@ function Home() {
     }
   };
 
+  // Promotions: Get random item:
+  function getRandomItem() {
+    return Math.floor(Math.random() * products?.length);
+  }
+
   return (
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-xl mb-4">
@@ -110,9 +116,16 @@ function Home() {
           setUserInput(event.target.value);
         }}
       />
-      <i className="p-10 bg-slate-500 mb-10">
-        Semanal Offerts Section From 1 to 4 Agout 50% OFF (pending)
-      </i>
+      <div className="flex space-x-40">
+        <PromotionCard
+          openProductDetails={openProductDetails}
+          data={products[getRandomItem()]}
+        />
+        <PromotionCard
+          openProductDetails={openProductDetails}
+          data={products[getRandomItem()]}
+        />
+      </div>
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {renderView()}
       </div>
