@@ -109,7 +109,7 @@ function Home() {
         {currentPathIndex === "" ? "HOME" : currentPathIndex.toUpperCase()}
       </h1>
       <input
-        className="rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none"
+        className="rounded-lg border border-black/50 w-80 p-4 mb-4 focus:outline-none"
         type="text"
         placeholder="Search a product"
         onChange={(event) => {

@@ -29,11 +29,11 @@ function ProductDetail({ closeProductDetails, detailsOpen }) {
           <span className="card-span text-lg font-medium tx-title">
             {productOnDetails.title}
           </span>
-          <span className="card-span text-2xl font-medium tx-price">
+          <span className="card-span text-2xl font-medium tx-price min-w-[100px]">
             $ {productOnDetails.price}
           </span>
         </p>
-        <p className="text-start">{productOnDetails.description}</p>
+        <p className="text-start font-light">{productOnDetails.description}</p>
       </div>
     </aside>
   );

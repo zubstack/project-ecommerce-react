@@ -16,7 +16,7 @@ function OrderView() {
         <Link to="/my-orders" className="absolute left-0">
           <FaChevronLeft className="h-4 w-4 text-black cursor-pointer" />
         </Link>
-        <h1>Factura</h1>
+        <h1>Order</h1>
       </div>
       <div className="w-[500px] border-2 border-black/70 p-6">
         {orders?.[index]?.products.map((product) => (
