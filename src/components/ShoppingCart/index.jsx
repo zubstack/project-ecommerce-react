@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { ShoppingCartContext } from "../../Context";
+import { ShoppingCartContext } from "../../context";
 
 function ShoppingCart() {
   const { shoppingCounter } = useContext(ShoppingCartContext);

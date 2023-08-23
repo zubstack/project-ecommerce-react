@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaMinusCircle } from "react-icons/fa";
-import { ShoppingCartContext } from "../../Context";
+import { ShoppingCartContext } from "../../context";
 
 function ShoppingCard({ data, hasCloseButton }) {
   const { removeFromShoppingCart } = useContext(ShoppingCartContext);

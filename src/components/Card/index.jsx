@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
-import { ShoppingCartContext } from "../../Context";
+import { ShoppingCartContext } from "../../context";
 
 function Card({ data, openProductDetails, openShoppingAside }) {
   let { setproductOnDetails, addToShoppingCart } =

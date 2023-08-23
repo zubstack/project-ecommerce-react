@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { FaChevronCircleRight } from "react-icons/fa";
 import "./styles.css";
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../Context";
+import { ShoppingCartContext } from "../../context";
 function ProductDetail({ closeProductDetails, detailsOpen }) {
   const { productOnDetails } = useContext(ShoppingCartContext);
   //PENDING: Details smooth appearing [absolute]

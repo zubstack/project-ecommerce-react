@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../Context";
-import ShoppingCard from "../../Components/ShoppingCard";
+import { ShoppingCartContext } from "../../context";
+import ShoppingCard from "../../components/ShoppingCard";
 import { Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 

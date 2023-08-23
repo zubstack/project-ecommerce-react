@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { ShoppingCartContext } from "../../Context";
+import { ShoppingCartContext } from "../../context";
 import "./styles.css";
 import ShoppingCart from "../ShoppingCart";
-import SignIn from "../../Pages/SignIn";
+import SignIn from "../../pages/SignIn";
 
 let optionsLeft = [
   {

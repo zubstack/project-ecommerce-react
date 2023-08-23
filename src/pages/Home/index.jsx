@@ -1,11 +1,11 @@
-import Card from "../../Components/Card";
-import ProductDetail from "../../Components/ProductDetail";
-import ShoppingAside from "../../Components/ShoppingAside";
+import Card from "../../components/Card";
+import ProductDetail from "../../components/ProductDetail";
+import ShoppingAside from "../../components/ShoppingAside";
 import { useContext, useEffect, useState } from "react";
 import productServices from "../../services/products";
 import { useNavigate } from "react-router-dom";
-import PromotionCard from "../../Components/PromotionCard";
-import { ShoppingCartContext } from "../../Context";
+import PromotionCard from "../../components/PromotionCard";
+import { ShoppingCartContext } from "../../context";
 
 function Home() {
   const categoriesList = [

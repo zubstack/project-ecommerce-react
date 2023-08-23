@@ -1,15 +1,15 @@
 import { useContext } from "react";
-import { ShoppingCartContext, ShoppingCartProvider } from "./Context";
+import { ShoppingCartContext, ShoppingCartProvider } from "./context";
 import { BrowserRouter, Navigate, useRoutes } from "react-router-dom";
-import Home from "./Pages/Home";
-import MyAccount from "./Pages/MyAccount";
-import MyOrders from "./Pages/MyOrders";
-import SignIn from "./Pages/SignIn";
-import SignOut from "./Pages/SignOut";
-import NotFound from "./Pages/NotFound";
-import Navbar from "./Components/Navbar";
-import Layout from "./Components/Layout";
-import OrderView from "./Pages/OrderView";
+import Home from "./pages/Home";
+import MyAccount from "./pages/MyAccount";
+import MyOrders from "./pages/MyOrders";
+import SignIn from "./pages/SignIn";
+import SignOut from "./pages/SignOut";
+import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
+import OrderView from "./pages/OrderView";
 import "./App.css";
 
 function AppRoutes() {

@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { ShoppingCartContext } from "../../Context";
+import { ShoppingCartContext } from "../../context";
 
 function SignIn() {
   const {

@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { ShoppingCartContext } from "../../Context";
+import { ShoppingCartContext } from "../../context";
 
 function MyAccount() {
   const { setAccount, account } = useContext(ShoppingCartContext);
