@@ -1,11 +1,11 @@
 import Card from "../../components/Card";
 import ProductDetail from "../../components/ProductDetail";
 import ShoppingAside from "../../components/ShoppingAside";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import productServices from "../../services/products";
 import { useNavigate } from "react-router-dom";
 import PromotionCard from "../../components/PromotionCard";
-import { ShoppingCartContext } from "../../context";
+import productsInPromotion from "../../utils/promotions";
 
 function Home() {
   const categoriesList = [
@@ -98,10 +98,6 @@ function Home() {
       return <p>No Results Found</p>;
     }
   };
-
-  // Promotions from context:
-
-  const { productsInPromotion } = useContext(ShoppingCartContext);
 
   return (
     <div className="flex flex-col items-center text-center">

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -113,14 +114,6 @@ const ShoppingCartProvider = ({ children }) => {
   const hasUserAccount = !noAccountinLocalState || !noAccountinLocalStorage;
   const isUserSignOut = signOut || parsedSignOut;
 
-  function getRandomItem() {
-    return Math.floor(Math.random() * 100);
-  }
-
-  //PROMOTIONS:
-
-  const productsInPromotion = [getRandomItem(), getRandomItem()];
-
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -146,8 +139,6 @@ const ShoppingCartProvider = ({ children }) => {
         parsedSignOut,
         hasUserAccount,
         isUserSignOut,
-
-        productsInPromotion,
       }}
     >
       {children}

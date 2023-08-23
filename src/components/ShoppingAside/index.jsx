@@ -27,14 +27,18 @@ function ShoppingAside({ closeShoppingAside, shoppingOpen }) {
       </div>
 
       <div className="px-1 flex-1">
-        {shoppingCart.map((product) => (
-          <ShoppingCard
-            key={uuidv4()}
-            data={product}
-            keyId={product.key}
-            hasCloseButton={true}
-          />
-        ))}
+        {shoppingCart.length > 0 ? (
+          shoppingCart.map((product) => (
+            <ShoppingCard
+              key={uuidv4()}
+              data={product}
+              keyId={product.key}
+              hasCloseButton={true}
+            />
+          ))
+        ) : (
+          <p>{"No shoppping cart :("}</p>
+        )}
       </div>
       <div className="px-6 mb-16">
         <p
