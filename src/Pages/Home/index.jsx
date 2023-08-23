@@ -1,10 +1,11 @@
 import Card from "../../Components/Card";
 import ProductDetail from "../../Components/ProductDetail";
 import ShoppingAside from "../../Components/ShoppingAside";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import productServices from "../../services/products";
 import { useNavigate } from "react-router-dom";
 import PromotionCard from "../../Components/PromotionCard";
+import { ShoppingCartContext } from "../../Context";
 
 function Home() {
   const categoriesList = [
@@ -98,10 +99,9 @@ function Home() {
     }
   };
 
-  // Promotions: Get random item:
-  function getRandomItem() {
-    return Math.floor(Math.random() * products?.length);
-  }
+  // Promotions from context:
+
+  const { productsInPromotion } = useContext(ShoppingCartContext);
 
   return (
     <div className="flex flex-col items-center text-center">
@@ -119,11 +119,11 @@ function Home() {
       <div className="flex space-x-40">
         <PromotionCard
           openProductDetails={openProductDetails}
-          data={products[getRandomItem()]}
+          data={products[productsInPromotion[0]]}
         />
         <PromotionCard
           openProductDetails={openProductDetails}
-          data={products[getRandomItem()]}
+          data={products[productsInPromotion[1]]}
         />
       </div>
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
