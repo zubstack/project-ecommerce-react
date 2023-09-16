@@ -38,6 +38,9 @@ function ProductDetail({ closeProductDetails, detailsOpen }) {
         <p className="text-start font-light">
           {productOnDetails?.item.description}
         </p>
+        <button className="flex justify-center items-center text-center bg-black text-white  py-1 rounded-md">
+          See more details
+        </button>
       </div>
     </aside>
   );

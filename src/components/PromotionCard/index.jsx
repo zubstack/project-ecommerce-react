@@ -27,7 +27,7 @@ function PromotionCard({ openProductDetails, data }) {
       </div>
       <div className="flex flex-col justify-center items-start w-[60%] p-3">
         <h1 className="mb-1">SPECIAL PRICE:</h1>
-        <span className="absolute bottom-1 left-4 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
+        <span className="absolute bottom-1 left-4 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0 ">
           {data?.item.brand}
         </span>
         <p className="text-sm font-light tx-title text-start mb-5">
@@ -38,7 +38,7 @@ function PromotionCard({ openProductDetails, data }) {
           <span className="text-sm font-light line-through">
             ${data?.item.price}
           </span>
-          <span className="absolute right-8 text-2xl bottom-4">
+          <span className="absolute right-8 text-2xl bottom-4 tx-price">
             ${data?.item.price ? (data?.item.price * 0.8).toFixed(2) : ""}
           </span>
         </p>
