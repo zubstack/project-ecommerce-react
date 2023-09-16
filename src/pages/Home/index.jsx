@@ -2,65 +2,74 @@ import Card from "../../components/Card";
 import ProductDetail from "../../components/ProductDetail";
 import ShoppingAside from "../../components/ShoppingAside";
 import { useEffect, useState } from "react";
-import productServices from "../../services/products";
 import { useNavigate } from "react-router-dom";
 import PromotionCard from "../../components/PromotionCard";
 import productsInPromotion from "../../utils/promotions";
+import axios from "axios";
+import endpoints from "../../services/endpoints";
 
 function Home() {
-  const categoriesList = [
-    "clothes",
-    "furniture",
-    "electronics",
-    "toys",
-    "others",
-  ];
+  // const categoriesList = [
+  //   "clothes",
+  //   "furniture",
+  //   "electronics",
+  //   "toys",
+  //   "others",
+  // ];
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  //Read current category from path:
-  const currentPath = window.location.pathname;
-  let currentPathIndex = currentPath.substring(
-    currentPath.lastIndexOf("/") + 1
-  );
+  // //Read current category from path:
+  // const currentPath = window.location.pathname;
+  // let currentPathIndex = currentPath.substring(
+  //   currentPath.lastIndexOf("/") + 1
+  // );
 
-  // Verify validation of the current catery:
+  // // Verify validation of the current catery:
 
-  useEffect(() => {
-    categoriesList.includes(currentPathIndex) || currentPathIndex == "" ? (
-      <Home />
-    ) : (
-      navigate("/category/not-found")
-    );
-  }, []);
+  // useEffect(() => {
+  //   categoriesList.includes(currentPathIndex) || currentPathIndex == "" ? (
+  //     <Home />
+  //   ) : (
+  //     navigate("/category/not-found")
+  //   );
+  // }, []);
 
   //Products: ==============================================================
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    productServices.getAll().then((data) => setProducts(data));
+    // productServices.getAll().then((data) => setProducts(data));
+    axios
+      .get(endpoints.getAll)
+      .then((data) => {
+        setProducts(data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   //Products by category: [categoryProducts] =============================
   //Choose the appropiate products:
-  const categoryProducts = products?.filter((item) =>
-    item.category.name.toLowerCase().includes(currentPathIndex)
-  );
+  // const categoryProducts = products?.filter((item) =>
+  //   item.category.name.toLowerCase().includes(currentPathIndex)
+  // );
 
-  //Products by user filter: [filteredProducts] =============================
-  const [userInput, setUserInput] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState("");
+  // //Products by user filter: [filteredProducts] =============================
+  // const [userInput, setUserInput] = useState("");
+  // const [filteredProducts, setFilteredProducts] = useState("");
 
-  //Selection:
-  const filterItems = (userInput) => {
-    return products?.filter((item) =>
-      item.title.toLowerCase().includes(userInput.toLowerCase())
-    );
-  };
-  //Setting (if user inputs):
-  useEffect(() => {
-    if (userInput) setFilteredProducts(filterItems(userInput));
-  }, [categoryProducts, userInput]);
+  // //Selection:
+  // const filterItems = (userInput) => {
+  //   return products?.filter((item) =>
+  //     item.title.toLowerCase().includes(userInput.toLowerCase())
+  //   );
+  // };
+  // //Setting (if user inputs):
+  // useEffect(() => {
+  //   if (userInput) setFilteredProducts(filterItems(userInput));
+  // }, [categoryProducts, userInput]);
 
   //Details: ==========================================================
 
@@ -77,41 +86,31 @@ function Home() {
   //Render functions: ==========================================================
 
   const renderView = () => {
-    const productsToRender =
-      userInput.length > 0 ? filteredProducts : categoryProducts;
+    //   const productsToRender =
+    //     userInput.length > 0 ? filteredProducts : categoryProducts;
 
-    //PENDING: Path category - All category is valid
-    //PENDING: If a category doesnt have items, should be display "New items here soon..."
-    //PENDING: Semanal offerts
-    //PENDING: Loading state
-    //PENDING: Scroll bar
-    if (productsToRender?.length > 0) {
-      return productsToRender.map((item) => (
-        <Card
-          key={item.id}
-          openProductDetails={openProductDetails}
-          openShoppingAside={openShoppingAside}
-          data={item}
-        />
-      ));
-    } else {
-      return <p>No Results Found</p>;
-    }
+    //   //PENDING: Path category - All category is valid
+    //   //PENDING: If a category doesnt have items, should be display "New items here soon..."
+    //   //PENDING: Semanal offerts
+    //   //PENDING: Loading state
+    //   //PENDING: Scroll bar
+    //   if (productsToRender?.length > 0) {
+    // return productsToRender.map((item) => (
+    return products.map((item) => (
+      <Card
+        key={item.id}
+        openProductDetails={openProductDetails}
+        openShoppingAside={openShoppingAside}
+        data={item}
+      />
+    ));
+    // } else {
+    //   return <p>No Results Found</p>;
+    // }
   };
 
   return (
     <div className="flex flex-col items-center text-center">
-      <h1 className="font-medium text-xl mb-4">
-        {currentPathIndex === "" ? "HOME" : currentPathIndex.toUpperCase()}
-      </h1>
-      <input
-        className="rounded-lg border border-black/50 w-80 p-4 mb-4 focus:outline-none"
-        type="text"
-        placeholder="Search a product"
-        onChange={(event) => {
-          setUserInput(event.target.value);
-        }}
-      />
       <div className="flex space-x-40">
         <PromotionCard
           openProductDetails={openProductDetails}
@@ -125,13 +124,13 @@ function Home() {
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {renderView()}
       </div>
-      <ProductDetail
-        detailsOpen={detailsOpen}
-        closeProductDetails={closeProductDetails}
-      />
       <ShoppingAside
         closeShoppingAside={closeShoppingAside}
         shoppingOpen={shoppingOpen}
+      />
+      <ProductDetail
+        detailsOpen={detailsOpen}
+        closeProductDetails={closeProductDetails}
       />
     </div>
   );

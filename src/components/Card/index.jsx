@@ -19,12 +19,12 @@ function Card({ data, openProductDetails, openShoppingAside }) {
     >
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
-          {data.category.name}
+          {data.item.brand}
         </span>
         <img
           className="w-full h-full object-cover rounded-lg"
-          src={data.images[0]}
-          alt={data.title}
+          src={data.item.image_url}
+          alt={data.item.name}
         />
 
         <button
@@ -40,10 +40,10 @@ function Card({ data, openProductDetails, openShoppingAside }) {
       </figure>
       <p className="flex justify-between">
         <span className="card-span text-sm font-light tx-title">
-          {data.title}
+          {data.item.name}
         </span>
         <span className="card-span text-lg font-medium tx-price min-w-[50px]">
-          $ {data.price}
+          $ {data.item.price}
         </span>
       </p>
     </div>

@@ -6,12 +6,7 @@ const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = ({ children }) => {
   //Product on Details : ================================================
-  const [productOnDetails, setproductOnDetails] = useState({
-    title: "",
-    price: "",
-    description: "",
-    images: [],
-  });
+  const [productOnDetails, setproductOnDetails] = useState({});
 
   //Shopping Cart & Counter ============================================
 
@@ -52,8 +47,7 @@ const ShoppingCartProvider = ({ children }) => {
   };
 
   const showTotalPrice = () =>
-    shoppingCart.reduce((total, product) => total + product.price, 0);
-
+    shoppingCart.reduce((total, product) => total + product.item.price, 0);
   // Orders: =====================================================
   const [orders, setOrders] = useState([]);
 
@@ -65,7 +59,7 @@ const ShoppingCartProvider = ({ children }) => {
       date: date.toLocaleDateString(),
       products: shoppingCart,
       totalProducts: shoppingCart.length,
-      totalPrice: showTotalPrice(),
+      totalPrice: showTotalPrice().toFixed(2),
     };
     setOrders([...orders, orderToAdd]);
     setShoppingCart([]);

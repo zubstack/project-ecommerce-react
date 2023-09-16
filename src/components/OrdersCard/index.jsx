@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import { FaChevronRight } from "react-icons/fa";
 
 function OrdersCard({ data }) {
+  const date = new Date().toLocaleDateString();
+
   return (
     <div className="flex justify-between items-center mb-3 border border-black w-80 py-2 px-4 rounded-sm hover:bg-[#f1f5f9]">
       <div className="flex flex-col">
-        <span>{data.date}</span>
+        <span>{date}</span>
         <div>
           <span className="font-light">Articles: </span>
           <span>{data.totalProducts}</span>

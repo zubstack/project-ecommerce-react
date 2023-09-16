@@ -102,13 +102,13 @@ function Navbar() {
     });
   }
   return (
-    <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white nav-text ">
-      <ul className="flex items-center gap-3">
+    <nav className="flex shadow-md justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white nav-text">
+      <ul className="flex items-center gap-8">
         <li className="font-semibold text-lg">
-          <NavItem to={"/"}>LOGO</NavItem>
+          <NavItem to={"/"}>TECH SHOP</NavItem>
         </li>
 
-        {optionsLeft.map((option) => {
+        {/* {optionsLeft.map((option) => {
           return (
             <li key={option.text}>
               <NavItem to={option.to} activeStyle={activeStyle}>
@@ -116,7 +116,16 @@ function Navbar() {
               </NavItem>
             </li>
           );
-        })}
+        })} */}
+
+        <input
+          className="rounded-lg border border-black/50 w-[350px] py-3 px-3 focus:outline-none"
+          type="text"
+          placeholder="Search a product"
+          // onChange={(event) => {
+          //   setUserInput(event.target.value);
+          // }}
+        />
       </ul>
       <ul className="flex items-center gap-3">
         {isUserSignOut ? (

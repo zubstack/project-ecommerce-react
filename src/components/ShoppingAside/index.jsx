@@ -10,9 +10,8 @@ import { v4 as uuidv4 } from "uuid";
 function ShoppingAside({ closeShoppingAside, shoppingOpen }) {
   const { shoppingCart, showTotalPrice, handleCheckout } =
     useContext(ShoppingCartContext);
-
-  let showTotal = showTotalPrice();
-
+  const totalPrice = showTotalPrice();
+  console.log("shoppingCart", shoppingCart);
   return (
     <aside
       className={`product-detail ${
@@ -43,11 +42,11 @@ function ShoppingAside({ closeShoppingAside, shoppingOpen }) {
       <div className="px-6 mb-16">
         <p
           className={`${
-            showTotal > 0 ? "flex" : "hidden"
+            totalPrice > 0 ? "flex" : "hidden"
           }  justify-between items-center p-4`}
         >
           <span className="font-light">Total:</span>
-          <span className="font-medium text-2xl">$ {showTotal}</span>
+          <span className="font-medium text-2xl">$ {totalPrice}</span>
         </p>
         <Link to="/my-orders/last">
           <button
