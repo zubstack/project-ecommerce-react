@@ -1,5 +1,6 @@
 .product-detail {
   width: 400px;
   height: 100vh;
-  top: 68px;
+  top: 70px;
+  box-shadow: 0px 0px 5px 2px gray;
 }

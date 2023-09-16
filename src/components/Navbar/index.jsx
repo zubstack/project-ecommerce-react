@@ -5,39 +5,6 @@ import "./styles.css";
 import ShoppingCart from "../ShoppingCart";
 import SignIn from "../../pages/SignIn";
 
-let optionsLeft = [
-  {
-    to: "/",
-    text: "All",
-    className: "",
-  },
-  {
-    to: "/category/clothes",
-    text: "Clothes",
-    className: "",
-  },
-  {
-    to: "/category/electronics",
-    text: "Electronics",
-    className: "",
-  },
-  {
-    to: "/category/furniture",
-    text: "Furnitures",
-    className: "",
-  },
-  {
-    to: "/category/toys",
-    text: "Toys",
-    className: "",
-  },
-  {
-    to: "/category/others",
-    text: "Others",
-    className: "",
-  },
-];
-
 let optionsRight = [
   {
     to: "/my-orders",
@@ -102,24 +69,14 @@ function Navbar() {
     });
   }
   return (
-    <nav className="flex shadow-md justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm bg-white nav-text">
+    <nav className="flex shadow-md justify-between items-center fixed top-0 z-10 w-full py-4 px-8 text-sm bg-white nav-text">
       <ul className="flex items-center gap-8">
         <li className="font-semibold text-lg">
           <NavItem to={"/"}>TECH SHOP</NavItem>
         </li>
 
-        {/* {optionsLeft.map((option) => {
-          return (
-            <li key={option.text}>
-              <NavItem to={option.to} activeStyle={activeStyle}>
-                {option.text}
-              </NavItem>
-            </li>
-          );
-        })} */}
-
         <input
-          className="rounded-lg border border-black/50 w-[350px] py-3 px-3 focus:outline-none"
+          className="rounded-lg border border-black/50 w-[350px] py-2 px-3 focus:outline-none"
           type="text"
           placeholder="Search a product"
           // onChange={(event) => {

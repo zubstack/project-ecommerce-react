@@ -41,6 +41,10 @@
   color: rgb(166, 166, 166);
 }
 
+.container {
+  padding: 0.5rem 0.75rem;
+}
+
 /* * {
   border: 1px solid brown;
 } */
