@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
 import OrderView from "./pages/OrderView";
 import "./App.css";
+import Specifications from "./pages/Specifications";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);
@@ -23,7 +24,14 @@ function AppRoutes() {
       path: "/category/:category",
       element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
     },
-
+    {
+      path: "/spefications/:id",
+      element: !isUserSignOut ? (
+        <Specifications />
+      ) : (
+        <Navigate replace to={"/sign-in"} />
+      ),
+    },
     {
       path: "/my-account",
       element: <MyAccount />,

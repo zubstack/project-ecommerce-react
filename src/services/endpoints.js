@@ -3,6 +3,7 @@ const baseUrl = "http://localhost:4000";
 
 const endpoints = {
   getAll: `${baseUrl}/api/products`,
+  getProduct: (id) => `${baseUrl}/api/products/${id}`,
 };
 
 // const getAll = () => {

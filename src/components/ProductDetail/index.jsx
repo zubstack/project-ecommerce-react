@@ -45,7 +45,7 @@ function ProductDetail({ closeProductDetails, detailsOpen }) {
 
         <NavLink
           className="flex justify-center items-center text-center bg-black text-white  py-1 rounded-md ml-2"
-          to={"/spefications"}
+          to={`/spefications/${productOnDetails?.id}`}
         >
           See more details
         </NavLink>
