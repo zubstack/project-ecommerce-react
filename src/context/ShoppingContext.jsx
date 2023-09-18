@@ -28,6 +28,8 @@ const ShoppingCartProvider = ({ children }) => {
     if (!productRepeated) {
       newShoppingCart = [...shoppingCart, { ...newItem, quantity: 1 }];
       setShoppingCart(newShoppingCart);
+    } else {
+      removeFromShoppingCart(newItem.id);
     }
   };
 

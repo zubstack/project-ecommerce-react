@@ -42,9 +42,9 @@ function Card({ data, openProductDetails, openShoppingAside }) {
             className="flex justify-center items-center text-center  text-white w-20  rounded-md"
           >
             {shoppingCart[index]?.quantity ? (
-              <FaCheckCircle className="text-xl bg-sky-700 w-full h-[30px] py-1 rounded-md" />
+              <FaCheckCircle className="text-xl bg-sky-700 w-full h-[30px] py-1 rounded-md hover:bg-sky-900" />
             ) : (
-              <FaCartPlus className="text-xl bg-black/90 w-full h-[30px] py-1 rounded-md" />
+              <FaCartPlus className="text-xl bg-black/90 w-full h-[30px] py-1 rounded-md hover:bg-black" />
             )}
           </button>
           <p className="tx-price px-2 py-1 rounded-md">$ {data.item.price}</p>

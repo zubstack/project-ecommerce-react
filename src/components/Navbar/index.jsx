@@ -94,7 +94,7 @@ function Navbar() {
         <li>
           <NavItem to={"/cart"}>
             {/* <ShoppingCart /> */}
-            <div className="flex items-center gap-1 bg-black p-3 rounded-lg text-white text-sm">
+            <div className="flex items-center gap-1 bg-black/90 p-3 rounded-lg text-white text-sm hover:bg-black">
               <FaShoppingCart />
 
               <span className="ml-2">{`Cart · ${shoppingCounter}`}</span>
