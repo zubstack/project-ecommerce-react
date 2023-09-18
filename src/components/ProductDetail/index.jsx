@@ -6,7 +6,6 @@ import { ShoppingCartContext } from "../../context";
 import { NavLink } from "react-router-dom";
 function ProductDetail({ closeProductDetails, detailsOpen }) {
   const { productOnDetails } = useContext(ShoppingCartContext);
-  console.log("productOnDetails", productOnDetails);
   if (Object.keys(productOnDetails).length === 0) return;
   return (
     <aside

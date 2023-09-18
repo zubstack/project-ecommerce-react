@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 function MyOrders() {
   const { orders } = useContext(ShoppingCartContext);
 
-  console.log(orders);
-  console.log("orders.length", orders.length);
   return (
     <>
       <div className="flex items-center justify-center relative w-80 mb-4">

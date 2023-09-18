@@ -9,7 +9,6 @@ function PromotionCard({ openProductDetails, data }) {
     setproductOnDetails(data);
   };
 
-  console.log("data", data);
   return (
     <div
       onClick={showProductDetails}
