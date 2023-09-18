@@ -1,12 +1,10 @@
 import Card from "../../components/Card";
 import ProductDetail from "../../components/ProductDetail";
 import ShoppingAside from "../../components/ShoppingAside";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PromotionCard from "../../components/PromotionCard";
 import productsInPromotion from "../../utils/promotions";
-import axios from "axios";
-import endpoints from "../../services/endpoints";
 import { useProductContext } from "../../context/ProductContext";
 
 function Home() {
@@ -66,10 +64,9 @@ function Home() {
 
   // //Selection:
   const filterItems = (userInput) => {
-    // return products?.filter((item) =>
-    //   item.title.toLowerCase().includes(userInput.toLowerCase())
-    // );
-    return "works";
+    return products?.filter((product) =>
+      product.item.name.toLowerCase().includes(userInput.toLowerCase())
+    );
   };
   //Setting (if user inputs):
   useEffect(() => {
@@ -93,27 +90,26 @@ function Home() {
   //Render functions: ==========================================================
 
   const renderView = () => {
-    //   const productsToRender =
-    //     userInput.length > 0 ? filteredProducts : categoryProducts;
+    const productsToRender = userInput.length > 0 ? filteredProducts : products;
 
     //   //PENDING: Path category - All category is valid
     //   //PENDING: If a category doesnt have items, should be display "New items here soon..."
     //   //PENDING: Semanal offerts
     //   //PENDING: Loading state
     //   //PENDING: Scroll bar
-    //   if (productsToRender?.length > 0) {
-    // return productsToRender.map((item) => (
-    return products.map((item) => (
-      <Card
-        key={item.id}
-        openProductDetails={openProductDetails}
-        openShoppingAside={openShoppingAside}
-        data={item}
-      />
-    ));
-    // } else {
-    //   return <p>No Results Found</p>;
-    // }
+    if (productsToRender?.length > 0) {
+      return productsToRender.map((item) => (
+        // return products.map((item) => (
+        <Card
+          key={item.id}
+          openProductDetails={openProductDetails}
+          openShoppingAside={openShoppingAside}
+          data={item}
+        />
+      ));
+    } else {
+      return <p>No Results Found</p>;
+    }
   };
 
   return (
