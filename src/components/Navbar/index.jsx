@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../context";
 import "./styles.css";
 import ShoppingCart from "../ShoppingCart";
-import SignIn from "../../pages/SignIn";
 import { ProductContext } from "../../context/ProductContext";
+import { FaShoppingCart } from "react-icons/fa";
 
 let optionsRight = [
   {
@@ -17,12 +17,6 @@ let optionsRight = [
     text: "My account",
     className: "",
   },
-  // {
-  //   to: "/sign-in",
-  //   text: "Sign Out",
-  //   className: "",
-
-  // },
 ];
 
 // eslint-disable-next-line react/prop-types
@@ -39,15 +33,10 @@ function NavItem({ to, children, activeStyle }) {
 
 function Navbar() {
   const { updateProducts } = useContext(ProductContext);
+  const { shoppingCounter } = useContext(ShoppingCartContext);
 
-  const {
-    setSignOut,
-    signOut,
-    parsedSignOut,
-    isUserSignOut,
-    account,
-    hasUserAccount,
-  } = useContext(ShoppingCartContext);
+  const { setSignOut, parsedSignOut, isUserSignOut, account } =
+    useContext(ShoppingCartContext);
   let activeStyle = "underline underline-offset-4";
 
   function handleSignOut() {
@@ -72,7 +61,7 @@ function Navbar() {
     });
   }
   return (
-    <nav className="flex shadow-md justify-between items-center fixed top-0 z-10 w-full py-4 px-8 text-sm bg-white nav-text">
+    <nav className="flex shadow-md justify-between items-center fixed top-0 z-10 w-full py-2 px-8 text-sm bg-white nav-text">
       <ul className="flex items-center gap-8">
         <li className="font-semibold text-lg">
           <NavItem to={"/"}>TECH SHOP</NavItem>
@@ -104,8 +93,13 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavItem to={"/shop-cart"}>
-            <ShoppingCart />
+          <NavItem to={"/cart"}>
+            {/* <ShoppingCart /> */}
+            <div className="flex items-center gap-1 bg-black p-3 rounded-lg text-white text-sm">
+              <FaShoppingCart />
+
+              <span className="ml-2">{`Cart · ${shoppingCounter}`}</span>
+            </div>
           </NavItem>
         </li>
       </ul>
