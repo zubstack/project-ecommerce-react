@@ -1,12 +1,13 @@
 import Card from "../../components/Card";
 import ProductDetail from "../../components/ProductDetail";
 import ShoppingAside from "../../components/ShoppingAside";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PromotionCard from "../../components/PromotionCard";
 import productsInPromotion from "../../utils/promotions";
 import axios from "axios";
 import endpoints from "../../services/endpoints";
+import { useProductContext } from "../../context/ProductContext";
 
 function Home() {
   // const categoriesList = [
@@ -37,18 +38,21 @@ function Home() {
 
   //Products: ==============================================================
 
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    // productServices.getAll().then((data) => setProducts(data));
-    axios
-      .get(endpoints.getAll)
-      .then((data) => {
-        setProducts(data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const { products } = useProductContext();
+  console.log("products", products);
+
+  // const [products, setProducts] = useState([]);
+  // useEffect(() => {
+  //   // productServices.getAll().then((data) => setProducts(data));
+  //   axios
+  //     .get(endpoints.getAll)
+  //     .then((data) => {
+  //       setProducts(data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   //Products by category: [categoryProducts] =============================
   //Choose the appropiate products:

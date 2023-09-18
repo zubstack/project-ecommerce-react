@@ -12,6 +12,7 @@ import Layout from "./components/Layout";
 import OrderView from "./pages/OrderView";
 import "./App.css";
 import Specifications from "./pages/Specifications";
+import { ProductProvider } from "./context/ProductContext";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);
@@ -69,14 +70,16 @@ function AppRoutes() {
 }
 function App() {
   return (
-    <ShoppingCartProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Layout>
-          <AppRoutes />
-        </Layout>
-      </BrowserRouter>
-    </ShoppingCartProvider>
+    <ProductProvider>
+      <ShoppingCartProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Layout>
+            <AppRoutes />
+          </Layout>
+        </BrowserRouter>
+      </ShoppingCartProvider>
+    </ProductProvider>
   );
 }
 
