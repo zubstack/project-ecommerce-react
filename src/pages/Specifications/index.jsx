@@ -22,9 +22,46 @@ function Specifications() {
     findProduct();
   }, []);
 
-  console.log("product", product);
-
   if (!Object.keys(product).length) return;
+  console.log("product", product);
+  const items = [
+    {
+      name: "Additional features",
+      value: product.specifications.additional_features,
+    },
+    {
+      name: "Backlighting",
+      value: product.specifications.backlighting,
+    },
+    {
+      name: "Connectivity",
+      value: product.specifications.connectivity,
+    },
+    {
+      name: "Dimensions",
+      value: product.specifications.dimensions,
+    },
+    {
+      name: "Keyboard type",
+      value: product.specifications.keyboard_type,
+    },
+    {
+      name: "Layout",
+      value: product.specifications.layout,
+    },
+    {
+      name: "Shipping information",
+      value: product.specifications.shipping_information,
+    },
+    {
+      name: "Switch type",
+      value: product.specifications.switch_type,
+    },
+    {
+      name: "Weight",
+      value: product.specifications.weight,
+    },
+  ];
 
   return (
     <>
@@ -45,57 +82,14 @@ function Specifications() {
               {product?.item.description}
             </p>
             <ul className="">
-              <li className="flex gap-2 py-[2px]">
-                Additional features:
-                <p className="font-light">
-                  {product.specifications.additional_features}
-                </p>
-              </li>
-              <li className="flex gap-2 py-[2px]">
-                Backlighting:
-                <p className="font-light">
-                  {product.specifications.backlighting}
-                </p>
-              </li>
-              <li className="flex gap-2 py-[2px]">
-                Connectivity:
-                <p className="font-light">
-                  {product.specifications.connectivity}
-                </p>
-              </li>
-              <li className="flex gap-2 py-[2px]">
-                Dimensions:
-                <p className="font-light">
-                  {product.specifications.dimensions}
-                </p>
-              </li>
-              <li className="flex gap-2 py-[2px]">
-                Keyboard type:
-                <p className="font-light">
-                  {product.specifications.keyboard_type}
-                </p>
-              </li>
-
-              <li className="flex gap-2 py-[2px]">
-                Layout:
-                <p className="font-light">{product.specifications.layout}</p>
-              </li>
-              <li className="flex gap-2 py-[2px]">
-                Shipping information:
-                <p className="font-light">
-                  {product.specifications.shipping_information}
-                </p>
-              </li>
-              <li className="flex gap-2 py-[2px]">
-                Switch type:
-                <p className="font-light">
-                  {product.specifications.switch_type}
-                </p>
-              </li>
-              <li className="flex gap-2 py-[2px]">
-                Weight:
-                <p className="font-light">{product.specifications.weight}</p>
-              </li>
+              {items.map((item) => (
+                <li key={item.name} className="flex gap-2 py-[2px]">
+                  <p>
+                    {item.name} :{" "}
+                    <span className="font-light">{item.value}</span>
+                  </p>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="w-2/5">
