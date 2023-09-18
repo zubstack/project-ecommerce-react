@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import endpoints from "../../services/endpoints";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaStar, FaStarHalf } from "react-icons/fa";
+import { FaCartPlus, FaStar, FaStarHalf } from "react-icons/fa";
 
 function Specifications() {
   const { id } = useParams();
@@ -65,7 +65,7 @@ function Specifications() {
 
   return (
     <>
-      <div className="bg-white cursor-pointer w-full container h-[84vh] flex flex-col justify-center">
+      <div className=" w-full container h-[84vh] flex flex-col justify-center">
         <div className="flex items-center">
           <div className="flex-col justify-between items-center mb-4 ml-2 px-4 ">
             <p className="card-span text-4xl font-light  tx-title mt-4 mb-8">
@@ -100,17 +100,33 @@ function Specifications() {
                 alt="headphone"
               />
             </figure>
-            <p className="text-[40px] my-4 flex  gap-4 px-4 items-center">
-              {product?.item.rating}
-              <div className="flex">
+            <div className="text-[40px] my-4 flex  justify-between px-4 items-center">
+              <div className="flex items-center gap-4">
                 {" "}
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStarHalf />
-              </div>{" "}
-            </p>
+                {product?.item.rating}
+                <div className="flex">
+                  {" "}
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStarHalf />
+                </div>{" "}
+              </div>
+              <div>
+                <button
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    console.log("Works");
+                    // addToShoppingCart(data);
+                    // openShoppingAside();
+                  }}
+                  className="flex justify-center items-center text-center bg-black text-white w-20 py-1 rounded-md"
+                >
+                  <FaCartPlus className="text-xl" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -119,3 +135,10 @@ function Specifications() {
 }
 
 export default Specifications;
+
+//PENDING: addToShoppingCart(data);
+//PENDING: openShoppingAside();
+//PENDING: See details button => link
+//PENDING: Link to go back
+//PENDING: Stars component
+//PENDING: Addtional features => array
