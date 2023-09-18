@@ -4,6 +4,7 @@ import { ShoppingCartContext } from "../../context";
 import "./styles.css";
 import ShoppingCart from "../ShoppingCart";
 import SignIn from "../../pages/SignIn";
+import { ProductContext } from "../../context/ProductContext";
 
 let optionsRight = [
   {
@@ -37,6 +38,8 @@ function NavItem({ to, children, activeStyle }) {
 }
 
 function Navbar() {
+  const { updateProducts } = useContext(ProductContext);
+
   const {
     setSignOut,
     signOut,
@@ -79,9 +82,9 @@ function Navbar() {
           className="rounded-lg border border-black/50 w-[350px] py-2 px-3 focus:outline-none"
           type="text"
           placeholder="Search a product"
-          // onChange={(event) => {
-          //   setUserInput(event.target.value);
-          // }}
+          onChange={(event) => {
+            updateProducts(event.target.value);
+          }}
         />
       </ul>
       <ul className="flex items-center gap-3">

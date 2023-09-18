@@ -1,28 +1,16 @@
 import Card from "../../components/Card";
 import ProductDetail from "../../components/ProductDetail";
 import ShoppingAside from "../../components/ShoppingAside";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PromotionCard from "../../components/PromotionCard";
 import productsInPromotion from "../../utils/promotions";
-import { useProductContext } from "../../context/ProductContext";
+import { ProductContext } from "../../context/ProductContext";
+import Promotions from "../../components/Promotions/Promotions";
 
 function Home() {
   //Products: ==============================================================
-  const { products } = useProductContext();
-
-  //Filter products: ===================================================
-  const [userInput, setUserInput] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState("");
-
-  const filterItems = (userInput) => {
-    return products?.filter((product) =>
-      product.item.name.toLowerCase().includes(userInput.toLowerCase())
-    );
-  };
-  useEffect(() => {
-    if (userInput) setFilteredProducts(filterItems(userInput));
-  }, [userInput]);
-
+  const { products, showPromotions } = useContext(ProductContext);
+  console.log("showPromotions", showPromotions);
   //Details : ======================================================
   const [detailsOpen, setDetailsOpen] = useState(false);
   const closeProductDetails = () => setDetailsOpen(false);
@@ -35,10 +23,8 @@ function Home() {
 
   //Render function: ====================================================
   const renderView = () => {
-    const productsToRender = userInput.length > 0 ? filteredProducts : products;
-
-    if (productsToRender?.length > 0) {
-      return productsToRender.map((item) => (
+    if (products?.length > 0) {
+      return products.map((item) => (
         <Card
           key={item.id}
           openProductDetails={openProductDetails}
@@ -52,25 +38,13 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center text-center mt-20">
-      <input
-        className="rounded-lg border border-black/50 w-[350px] py-2 px-3 focus:outline-none"
-        type="text"
-        placeholder="Search a product"
-        onChange={(event) => {
-          setUserInput(event.target.value);
-        }}
-      />
-      <div className="flex space-x-40">
-        <PromotionCard
+    <div className="flex flex-col items-center text-center">
+      {showPromotions && (
+        <Promotions
           openProductDetails={openProductDetails}
-          data={products[productsInPromotion[0]]}
+          products={products}
         />
-        <PromotionCard
-          openProductDetails={openProductDetails}
-          data={products[productsInPromotion[1]]}
-        />
-      </div>
+      )}
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {renderView()}
       </div>

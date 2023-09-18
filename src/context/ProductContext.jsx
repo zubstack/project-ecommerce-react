@@ -1,15 +1,12 @@
-// ProductContext.js
-import { createContext, useContext, useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { createContext, useState, useEffect } from "react";
 import endpoints from "../services/endpoints";
 
-const ProductContext = createContext();
-
-export function useProductContext() {
-  return useContext(ProductContext);
-}
+export const ProductContext = createContext();
 
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
+  const [showPromotions, setShowPromotions] = useState(true);
 
   const fetchProducts = async () => {
     try {
@@ -28,12 +25,23 @@ export function ProductProvider({ children }) {
     fetchProducts();
   }, []);
 
-  const updateProducts = (newListProducts) => {
-    setProducts(newListProducts);
+  const updateProducts = (userInput) => {
+    if (!userInput.length) {
+      setShowPromotions(true);
+      fetchProducts();
+    } else {
+      setShowPromotions(false);
+      const newList = products?.filter((product) =>
+        product.item.name.toLowerCase().includes(userInput.toLowerCase())
+      );
+      setProducts(newList);
+    }
   };
 
   return (
-    <ProductContext.Provider value={{ products, updateProducts }}>
+    <ProductContext.Provider
+      value={{ products, updateProducts, showPromotions }}
+    >
       {children}
     </ProductContext.Provider>
   );
