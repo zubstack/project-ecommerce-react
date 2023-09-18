@@ -4,14 +4,14 @@ import { FaCartPlus } from "react-icons/fa";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
 
 function Card({ data, openProductDetails, openShoppingAside }) {
-  let { setproductOnDetails, addToShoppingCart } =
+  let { shoppingCart, setproductOnDetails, addToShoppingCart } =
     useContext(ShoppingCartContext);
+  const index = shoppingCart.findIndex((product) => product.id === data.id);
 
   const showProductDetails = () => {
     openProductDetails();
     setproductOnDetails(data);
   };
-
   return (
     <div
       className="bg-white/10 cursor-pointer w-60 border border-black/40 rounded-lg p-2 relative"
@@ -41,7 +41,11 @@ function Card({ data, openProductDetails, openShoppingAside }) {
             }}
             className="flex justify-center items-center text-center bg-black text-white w-20 py-1 rounded-md"
           >
-            <FaCartPlus className="text-xl" />
+            {shoppingCart[index]?.quantity ? (
+              "Null"
+            ) : (
+              <FaCartPlus className="text-xl" />
+            )}
           </button>
           <p className="tx-price px-2 py-1 rounded-md">$ {data.item.price}</p>
         </span>

@@ -5,11 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = ({ children }) => {
-  //Product on Details : ================================================
+  //Product on Details :
   const [productOnDetails, setproductOnDetails] = useState({});
 
-  //Shopping Cart & Counter ============================================
-
+  //Shopping Cart & Counter
   const [shoppingCart, setShoppingCart] = useState([]);
   const shoppingCounter = shoppingCart.length;
 
@@ -22,19 +21,14 @@ const ShoppingCartProvider = ({ children }) => {
   //Shopping Aside • CRUD:
 
   const addToShoppingCart = (newItem) => {
-    const productIndex = shoppingCart.findIndex(
+    let newShoppingCart = [];
+    const productRepeated = shoppingCart.find(
       (product) => product.id === newItem.id
     );
-    let newShoppingCart = [];
-    if (productIndex >= 0) {
-      newShoppingCart = [...shoppingCart];
-      newShoppingCart[productIndex].quantity++;
-      newShoppingCart[productIndex].price =
-        newItem.price + newShoppingCart[productIndex].price;
-    } else {
+    if (!productRepeated) {
       newShoppingCart = [...shoppingCart, { ...newItem, quantity: 1 }];
+      setShoppingCart(newShoppingCart);
     }
-    setShoppingCart(newShoppingCart);
   };
 
   const removeFromShoppingCart = (item) => {

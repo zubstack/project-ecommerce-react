@@ -1,16 +1,13 @@
 import Card from "../../components/Card";
 import ProductDetail from "../../components/ProductDetail";
 import ShoppingAside from "../../components/ShoppingAside";
-import { useContext, useEffect, useState } from "react";
-import PromotionCard from "../../components/PromotionCard";
-import productsInPromotion from "../../utils/promotions";
+import { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import Promotions from "../../components/Promotions/Promotions";
 
 function Home() {
   //Products: ==============================================================
   const { products, showPromotions } = useContext(ProductContext);
-  console.log("showPromotions", showPromotions);
   //Details : ======================================================
   const [detailsOpen, setDetailsOpen] = useState(false);
   const closeProductDetails = () => setDetailsOpen(false);

@@ -39,10 +39,7 @@ function ShoppingAside({ closeShoppingAside, shoppingOpen }) {
       </div>
       <div className="flex justify-around">
         <Link to="/cart">
-          <div
-            className="w-full border border-black/80 py-3 px-8  rounded-lg"
-            onClick={handleCheckout}
-          >
+          <div className="w-full border border-black/80 py-3 px-8  rounded-lg">
             View cart ({shoppingCounter})
           </div>
         </Link>
