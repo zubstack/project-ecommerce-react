@@ -45,7 +45,7 @@ function Home() {
           products={products}
         />
       )}
-      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg mb-12">
         {renderView()}
       </div>
       <ShoppingAside
@@ -56,6 +56,12 @@ function Home() {
         detailsOpen={detailsOpen}
         closeProductDetails={closeProductDetails}
       />
+      {showPromotions && (
+        <Promotions
+          openProductDetails={openProductDetails}
+          products={products}
+        />
+      )}
     </div>
   );
 }

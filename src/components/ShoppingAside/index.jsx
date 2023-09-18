@@ -15,7 +15,7 @@ function ShoppingAside({ closeShoppingAside, shoppingOpen }) {
     <aside
       className={`product-detail ${
         shoppingOpen ? "flex" : "hidden"
-      } checkout-side-menu scrollable-cards flex-col fixed right-0 border border-black rounded-lg bg-white px-3`}
+      } checkout-side-menu scrollable-cards flex-col fixed right-0 border border-gray-100 rounded-lg  bg-white px-3 z-50`}
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xt">My order</h2>
