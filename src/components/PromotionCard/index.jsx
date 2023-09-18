@@ -12,7 +12,7 @@ function PromotionCard({ openProductDetails, data }) {
   return (
     <div
       onClick={showProductDetails}
-      className="flex justify-around p-2 h-[200px] w-[440px] border border-black/60 mt-10 mb-12 rounded-lg relative"
+      className="flex justify-around p-2 h-[200px] w-[440px] border border-black/60 rounded-lg relative bg-slate-100"
     >
       <div className="absolute h-[80px] w-[80px] border border-red right-[-35px] top-[-20px] rounded-[50%] bg-red-500 text-white flex items-center justify-center text-2xl">
         - 80%
