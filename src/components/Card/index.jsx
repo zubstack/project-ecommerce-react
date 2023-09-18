@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaCheck, FaCheckCircle } from "react-icons/fa";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
 
 function Card({ data, openProductDetails, openShoppingAside }) {
@@ -39,12 +39,12 @@ function Card({ data, openProductDetails, openShoppingAside }) {
               addToShoppingCart(data);
               openShoppingAside();
             }}
-            className="flex justify-center items-center text-center bg-black text-white w-20 py-1 rounded-md"
+            className="flex justify-center items-center text-center  text-white w-20  rounded-md"
           >
             {shoppingCart[index]?.quantity ? (
-              "Null"
+              <FaCheckCircle className="text-xl bg-sky-700 w-full h-[30px] py-1 rounded-md" />
             ) : (
-              <FaCartPlus className="text-xl" />
+              <FaCartPlus className="text-xl bg-black/90 w-full h-[30px] py-1 rounded-md" />
             )}
           </button>
           <p className="tx-price px-2 py-1 rounded-md">$ {data.item.price}</p>
