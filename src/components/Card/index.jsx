@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { FaCartPlus, FaPlus, FaShoppingCart } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 import { ShoppingCartContext } from "../../context";
 
 function Card({ data, openProductDetails, openShoppingAside }) {
@@ -27,7 +27,7 @@ function Card({ data, openProductDetails, openShoppingAside }) {
           alt={data.item.name}
         />
       </figure>
-      <p className="flex flex-col text-start">
+      <div className="flex flex-col text-start">
         <span className="text-sm font-light tx-title px-1 py-3 mb-12 h-16">
           {data.item.model} - {data.item.name}
         </span>
@@ -45,7 +45,7 @@ function Card({ data, openProductDetails, openShoppingAside }) {
           </button>
           <p className="tx-price px-2 py-1 rounded-md">$ {data.item.price}</p>
         </span>
-      </p>
+      </div>
     </div>
   );
 }
