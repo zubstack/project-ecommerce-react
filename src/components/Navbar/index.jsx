@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { ShoppingCartContext } from "../../context";
+import { ShoppingCartContext } from "../../context/ShoppingContext";
 import "./styles.css";
-import ShoppingCart from "../ShoppingCart";
 import { ProductContext } from "../../context/ProductContext";
 import { FaShoppingCart } from "react-icons/fa";
 

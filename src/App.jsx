@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { ShoppingCartContext, ShoppingCartProvider } from "./context";
 import { BrowserRouter, Navigate, useRoutes } from "react-router-dom";
 import Home from "./pages/Home";
 import MyAccount from "./pages/MyAccount";
@@ -13,6 +12,10 @@ import OrderView from "./pages/OrderView";
 import "./App.css";
 import Specifications from "./pages/Specifications";
 import { ProductProvider } from "./context/ProductContext";
+import {
+  ShoppingCartContext,
+  ShoppingCartProvider,
+} from "./context/ShoppingContext";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);

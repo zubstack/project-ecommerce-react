@@ -2,7 +2,7 @@
 import "./styles.css";
 import { FaChevronCircleRight } from "react-icons/fa";
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../context";
+import { ShoppingCartContext } from "../../context/ShoppingContext";
 import { NavLink } from "react-router-dom";
 function ProductDetail({ closeProductDetails, detailsOpen }) {
   const { productOnDetails } = useContext(ShoppingCartContext);

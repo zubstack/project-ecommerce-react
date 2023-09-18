@@ -3,7 +3,7 @@ import "./styles.css";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronCircleRight } from "react-icons/fa";
-import { ShoppingCartContext } from "../../context";
+import { ShoppingCartContext } from "../../context/ShoppingContext";
 import ShoppingCard from "../ShoppingCard";
 import { v4 as uuidv4 } from "uuid";
 

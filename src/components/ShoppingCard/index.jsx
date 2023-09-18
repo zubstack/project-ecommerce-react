@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { FaMinusCircle } from "react-icons/fa";
-import { ShoppingCartContext } from "../../context";
+import { ShoppingCartContext } from "../../context/ShoppingContext";
 
 function ShoppingCard({ data, hasCloseButton }) {
   const { removeFromShoppingCart } = useContext(ShoppingCartContext);

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../context";
+import { ShoppingCartContext } from "../../context/ShoppingContext";
 
 function PromotionCard({ openProductDetails, data }) {
   let { setproductOnDetails } = useContext(ShoppingCartContext);

@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../context";
 import ShoppingCard from "../../components/ShoppingCard";
 import { Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
+import { ShoppingCartContext } from "../../context/ShoppingContext";
 
 function OrderView() {
   const { orders } = useContext(ShoppingCartContext);
