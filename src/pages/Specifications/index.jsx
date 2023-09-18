@@ -23,7 +23,6 @@ function Specifications() {
   }, []);
 
   if (!Object.keys(product).length) return;
-  console.log("product", product);
   const items = [
     {
       name: "Additional features",

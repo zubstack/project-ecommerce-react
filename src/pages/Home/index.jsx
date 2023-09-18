@@ -57,19 +57,22 @@ function Home() {
   // );
 
   // //Products by user filter: [filteredProducts] =============================
-  // const [userInput, setUserInput] = useState("");
-  // const [filteredProducts, setFilteredProducts] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState("");
 
   // //Selection:
-  // const filterItems = (userInput) => {
-  //   return products?.filter((item) =>
-  //     item.title.toLowerCase().includes(userInput.toLowerCase())
-  //   );
-  // };
-  // //Setting (if user inputs):
-  // useEffect(() => {
-  //   if (userInput) setFilteredProducts(filterItems(userInput));
-  // }, [categoryProducts, userInput]);
+  const filterItems = (userInput) => {
+    // return products?.filter((item) =>
+    //   item.title.toLowerCase().includes(userInput.toLowerCase())
+    // );
+    return "works";
+  };
+  //Setting (if user inputs):
+  useEffect(() => {
+    if (userInput) setFilteredProducts(filterItems(userInput));
+  }, [userInput]);
+
+  console.log("userInput", userInput);
 
   //Details: ==========================================================
 
@@ -110,7 +113,15 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center text-center">
+    <div className="flex flex-col items-center text-center mt-20">
+      <input
+        className="rounded-lg border border-black/50 w-[350px] py-2 px-3 focus:outline-none"
+        type="text"
+        placeholder="Search a product"
+        onChange={(event) => {
+          setUserInput(event.target.value);
+        }}
+      />
       <div className="flex space-x-40">
         <PromotionCard
           openProductDetails={openProductDetails}

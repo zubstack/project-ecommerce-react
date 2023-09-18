@@ -11,7 +11,6 @@ function ShoppingAside({ closeShoppingAside, shoppingOpen }) {
   const { shoppingCart, showTotalPrice, handleCheckout } =
     useContext(ShoppingCartContext);
   const totalPrice = showTotalPrice();
-  console.log("shoppingCart", shoppingCart);
   return (
     <aside
       className={`product-detail ${
