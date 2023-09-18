@@ -2,11 +2,10 @@
 import { useContext } from "react";
 import { FaCartPlus, FaCheck, FaCheckCircle } from "react-icons/fa";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
+import CardButton from "../CartButton/CartButton";
 
 function Card({ data, openProductDetails, openShoppingAside }) {
-  let { shoppingCart, setproductOnDetails, addToShoppingCart } =
-    useContext(ShoppingCartContext);
-  const index = shoppingCart.findIndex((product) => product.id === data.id);
+  const { setproductOnDetails } = useContext(ShoppingCartContext);
 
   const showProductDetails = () => {
     openProductDetails();
@@ -33,20 +32,7 @@ function Card({ data, openProductDetails, openShoppingAside }) {
         </span>
 
         <span className="absolute bottom-3 left-4 flex items-center justify-between w-5/6">
-          <button
-            onClick={(event) => {
-              event.stopPropagation();
-              addToShoppingCart(data);
-              openShoppingAside();
-            }}
-            className="flex justify-center items-center text-center  text-white w-20  rounded-md"
-          >
-            {shoppingCart[index]?.quantity ? (
-              <FaCheckCircle className="text-xl bg-sky-700 w-full h-[30px] py-1 rounded-md hover:bg-sky-900" />
-            ) : (
-              <FaCartPlus className="text-xl bg-black/90 w-full h-[30px] py-1 rounded-md hover:bg-black" />
-            )}
-          </button>
+          <CardButton data={data} openShoppingAside={openShoppingAside} />
           <p className="tx-price px-2 py-1 rounded-md">$ {data.item.price}</p>
         </span>
       </div>
