@@ -66,47 +66,6 @@ const ShoppingCartProvider = ({ children }) => {
     // console.log(orders.length);
   };
 
-  // Local Storage: =============================================
-
-  const [account, setAccount] = useState({});
-  const [signOut, setSignOut] = useState(false);
-
-  const accountInLocalStorage = localStorage.getItem("account");
-  const signOutLocalStorage = localStorage.getItem("sign-out");
-  let parsedAccount;
-  let parsedSignOut;
-
-  if (!accountInLocalStorage) {
-    localStorage.setItem("account", JSON.stringify({}));
-    parsedAccount = {};
-  } else {
-    parsedAccount = JSON.parse(accountInLocalStorage);
-  }
-  if (!signOutLocalStorage) {
-    localStorage.setItem("sign-out", JSON.stringify(true));
-    parsedSignOut = true;
-  } else {
-    parsedSignOut = JSON.parse(signOutLocalStorage);
-  }
-
-  // parsedAccount => To remember user after refresh
-  //account => To the logic around the user data
-
-  useEffect(() => {
-    setAccount(parsedAccount);
-  }, []);
-
-  const noAccountinLocalStorage = parsedAccount
-    ? Object.keys(parsedAccount).length === 0
-    : true;
-
-  const noAccountinLocalState = account
-    ? Object.keys(account).length === 0
-    : true;
-
-  const hasUserAccount = !noAccountinLocalState || !noAccountinLocalStorage;
-  const isUserSignOut = signOut || parsedSignOut;
-
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -127,15 +86,6 @@ const ShoppingCartProvider = ({ children }) => {
         orders,
         setOrders,
         handleCheckout,
-
-        account,
-        setAccount,
-        signOut,
-        setSignOut,
-        parsedAccount,
-        parsedSignOut,
-        hasUserAccount,
-        isUserSignOut,
       }}
     >
       {children}

@@ -20,25 +20,20 @@ import Login from "./pages/Login/Login";
 import { UserContext, UserProvider } from "./context/UserContext";
 
 function AppRoutes() {
-  const { isUserSignOut } = useContext(ShoppingCartContext);
   const { user } = useContext(UserContext);
   console.log("user", user);
   let routes = useRoutes([
     {
       path: "/",
-      element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
+      element: user ? <Home /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/cart",
-      element: !isUserSignOut ? <Cart /> : <Navigate replace to={"/sign-in"} />,
+      element: user ? <Cart /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/spefications/:id",
-      element: !isUserSignOut ? (
-        <Specifications />
-      ) : (
-        <Navigate replace to={"/sign-in"} />
-      ),
+      element: user ? <Specifications /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/my-account",
