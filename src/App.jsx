@@ -16,6 +16,7 @@ import {
   ShoppingCartContext,
   ShoppingCartProvider,
 } from "./context/ShoppingContext";
+import Cart from "./pages/Cart/Cart";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);
@@ -25,8 +26,8 @@ function AppRoutes() {
       element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
     },
     {
-      path: "/category/:category",
-      element: !isUserSignOut ? <Home /> : <Navigate replace to={"/sign-in"} />,
+      path: "/cart",
+      element: !isUserSignOut ? <Cart /> : <Navigate replace to={"/sign-in"} />,
     },
     {
       path: "/spefications/:id",
