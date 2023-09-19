@@ -36,7 +36,7 @@ function AppRoutes() {
       element: user ? <Specifications /> : <Navigate replace to={"/login"} />,
     },
     {
-      path: "/my-account",
+      path: "/account",
       element: <MyAccount />,
     },
     {
