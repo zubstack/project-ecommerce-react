@@ -3,7 +3,6 @@ import { BrowserRouter, Navigate, useRoutes } from "react-router-dom";
 import Home from "./pages/Home";
 import MyAccount from "./pages/MyAccount";
 import MyOrders from "./pages/MyOrders";
-import SignIn from "./pages/SignIn";
 import SignOut from "./pages/SignOut";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
@@ -17,6 +16,7 @@ import {
   ShoppingCartProvider,
 } from "./context/ShoppingContext";
 import Cart from "./pages/Cart/Cart";
+import Login from "./pages/Login/Login";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);
@@ -58,8 +58,8 @@ function AppRoutes() {
       element: <MyOrders />,
     },
     {
-      path: "/sign-in",
-      element: <SignIn />,
+      path: "/login",
+      element: <Login />,
     },
     {
       path: "/sign-out",
