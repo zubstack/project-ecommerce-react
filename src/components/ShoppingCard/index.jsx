@@ -7,7 +7,7 @@ function ShoppingCard({ data, hasCloseButton }) {
   const { removeFromShoppingCart } = useContext(ShoppingCartContext);
 
   return (
-    <div className="flex justify-between items-center border border-white border-b-stone-400 mb-3 ">
+    <div className="flex justify-between items-center border border-white border-b-stone-200 mb-3 ">
       <div className="flex items-center mb-4">
         <figure className="w-[120px] h-[100px] border border-gray-300 rounded-md mr-4">
           <img
