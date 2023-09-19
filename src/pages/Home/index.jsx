@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import Promotions from "../../components/Promotions/Promotions";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
+import Billboard from "../../components/Billboard";
 
 function Home() {
   //Products: ==============================================================
@@ -38,6 +39,7 @@ function Home() {
 
   return (
     <div className="flex flex-col items-center text-center">
+      <Billboard />
       {showPromotions && (
         <Promotions
           openProductDetails={openProductDetails}
