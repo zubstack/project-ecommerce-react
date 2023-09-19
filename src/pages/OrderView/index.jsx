@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
 
-function Cart() {
-  const { shoppingCart } = useContext(ShoppingCartContext);
+function OrderView() {
+  const { orders } = useContext(ShoppingCartContext);
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+  if (index === "last") index = orders?.length - 1;
 
   return (
     <>
@@ -16,7 +19,7 @@ function Cart() {
         <h1>Order</h1>
       </div>
       <div className="w-[500px] border-2 border-black/70 p-6">
-        {shoppingCart?.products.map((product) => (
+        {orders?.[index]?.products.map((product) => (
           <ShoppingCard key={product.key} data={product} keyId={product.key} />
         ))}
       </div>
@@ -24,4 +27,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default OrderView;
