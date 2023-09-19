@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { NavLink } from "react-router-dom";

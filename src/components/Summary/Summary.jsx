@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import { useContext } from "react";
 import { FaGoogle, FaPaypal, FaShieldAlt } from "react-icons/fa";
+import { ShoppingCartContext } from "../../context/ShoppingContext";
+import { useNavigate } from "react-router-dom";
 
 function Summary({ total }) {
+  const { handleCheckout } = useContext(ShoppingCartContext);
+  const navigate = useNavigate();
+
   return (
     <div className="container mx-auto p-4 mt-12 w-[400px]">
       <summary className="bg-gray-100 rounded p-4 shadow-md list-none ">
@@ -16,7 +22,13 @@ function Summary({ total }) {
         <p className="font-light text-sm text-gray-500 mb-4">
           Shipping & taxes are calculated at checkout
         </p>
-        <button className="mb-4 block w-full bg-black/90 hover:bg-black text-white font-semibold px-4 py-2 rounded">
+        <button
+          onClick={() => {
+            handleCheckout();
+            navigate("/my-orders/last");
+          }}
+          className="mb-4 block w-full bg-black/90 hover:bg-black text-white font-semibold px-4 py-2 rounded"
+        >
           Checkout
         </button>
 
@@ -43,3 +55,5 @@ function Summary({ total }) {
 }
 
 export default Summary;
+
+//PENDING: Fix prices => $0.00
