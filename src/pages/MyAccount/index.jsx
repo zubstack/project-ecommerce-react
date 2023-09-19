@@ -20,3 +20,5 @@ function MyAccount() {
 }
 
 export default MyAccount;
+
+//PENDING: Improve account page

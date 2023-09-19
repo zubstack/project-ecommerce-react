@@ -6,7 +6,6 @@ function Login() {
   const { setUser, user } = useContext(UserContext);
   console.log("user", user);
   function handleCallbackResponse(response) {
-    console.log("JWT ", jwt_decode(response.credential));
     setUser(jwt_decode(response.credential));
   }
   useEffect(() => {
@@ -29,3 +28,5 @@ function Login() {
 }
 
 export default Login;
+
+//PENDING: Login layout

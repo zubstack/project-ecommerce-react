@@ -3,7 +3,6 @@ import { BrowserRouter, Navigate, useRoutes } from "react-router-dom";
 import Home from "./pages/Home";
 import MyAccount from "./pages/MyAccount";
 import MyOrders from "./pages/MyOrders";
-import SignOut from "./pages/SignOut";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
@@ -11,10 +10,7 @@ import OrderView from "./pages/OrderView";
 import "./App.css";
 import Specifications from "./pages/Specifications";
 import { ProductProvider } from "./context/ProductContext";
-import {
-  ShoppingCartContext,
-  ShoppingCartProvider,
-} from "./context/ShoppingContext";
+import { ShoppingCartProvider } from "./context/ShoppingContext";
 import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import { UserContext, UserProvider } from "./context/UserContext";
@@ -37,32 +33,29 @@ function AppRoutes() {
     },
     {
       path: "/account",
-      element: <MyAccount />,
+      element: user ? <MyAccount /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/my-orders/last",
-      element: <OrderView />,
+      element: user ? <OrderView /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/my-orders/:id",
-      element: <OrderView />,
+      element: user ? <OrderView /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/my-order",
-      element: <OrderView />,
+      element: user ? <OrderView /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/my-orders",
-      element: <MyOrders />,
+      element: user ? <MyOrders /> : <Navigate replace to={"/login"} />,
     },
     {
       path: "/login",
-      element: <Login />,
+      element: user ? <Navigate replace to={"/"} /> : <Login />,
     },
-    {
-      path: "/sign-out",
-      element: <SignOut />,
-    },
+
     {
       path: "/*",
       element: <NotFound />,

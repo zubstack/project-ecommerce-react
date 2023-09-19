@@ -68,3 +68,6 @@ function Home() {
 }
 
 export default Home;
+
+//PENDING: Loading Squeleton
+//PENDING: Footer

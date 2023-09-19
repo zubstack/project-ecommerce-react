@@ -10,7 +10,7 @@ function Billboard() {
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
         <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
-          <div className=" font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-wxl ">
+          <div className="font-rajdhani text-3xl sm:text-5xl lg:text-6xl sm:max-wxl ">
             {labelInfo}
           </div>
         </div>
