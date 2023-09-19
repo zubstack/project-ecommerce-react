@@ -1,10 +1,13 @@
 import jwt_decode from "jwt-decode";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../context/UserContext";
 
 function Login() {
+  const { setUser, user } = useContext(UserContext);
+  console.log("user", user);
   function handleCallbackResponse(response) {
     console.log("JWT ", jwt_decode(response.credential));
-    // console.log("JWT ", response.credential);
+    setUser(jwt_decode(response.credential));
   }
   useEffect(() => {
     /*global google*/

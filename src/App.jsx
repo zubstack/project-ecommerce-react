@@ -17,9 +17,12 @@ import {
 } from "./context/ShoppingContext";
 import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
+import { UserContext, UserProvider } from "./context/UserContext";
 
 function AppRoutes() {
   const { isUserSignOut } = useContext(ShoppingCartContext);
+  const { user } = useContext(UserContext);
+  console.log("user", user);
   let routes = useRoutes([
     {
       path: "/",
@@ -74,16 +77,18 @@ function AppRoutes() {
 }
 function App() {
   return (
-    <ProductProvider>
-      <ShoppingCartProvider>
-        <BrowserRouter>
-          <Navbar />
-          <Layout>
-            <AppRoutes />
-          </Layout>
-        </BrowserRouter>
-      </ShoppingCartProvider>
-    </ProductProvider>
+    <UserProvider>
+      <ProductProvider>
+        <ShoppingCartProvider>
+          <BrowserRouter>
+            <Navbar />
+            <Layout>
+              <AppRoutes />
+            </Layout>
+          </BrowserRouter>
+        </ShoppingCartProvider>
+      </ProductProvider>
+    </UserProvider>
   );
 }
 
