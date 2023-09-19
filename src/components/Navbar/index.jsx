@@ -85,18 +85,28 @@ function Navbar() {
             {!user ? "Sign In" : "Sign Out"}
           </NavLink>
         </li>
-        <li>
-          <NavItem to={"/cart"}>
-            <div className="flex items-center gap-1 bg-black/90 p-3 rounded-lg text-white text-sm hover:bg-black">
-              <FaShoppingCart />
+        {user && (
+          <li>
+            <NavItem to={"/cart"}>
+              <div className="flex items-center gap-1 bg-black/90 p-3 rounded-lg text-white text-sm hover:bg-black">
+                <FaShoppingCart />
 
-              <span className="ml-2">{`Cart · ${shoppingCounter}`}</span>
-            </div>
-          </NavItem>
-        </li>
+                <span className="ml-2">{`Cart · ${shoppingCounter}`}</span>
+              </div>
+            </NavItem>
+          </li>
+        )}
+        {/* <li>
+          <figure>
+            <img src={user?.picture} alt="" />
+            <p>{user?.name}</p>
+          </figure>
+        </li> */}
       </ul>
     </nav>
   );
 }
 
 export default Navbar;
+
+//PENDING:Login =>> Home redirect
