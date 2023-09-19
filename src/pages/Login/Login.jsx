@@ -10,7 +10,7 @@ function Login() {
     setUser(jwt_decode(response.credential));
   }
   useEffect(() => {
-    /*global google*/
+    /* global google */
     google.accounts.id.initialize({
       client_id:
         "285011231409-khihnnevflb1tcpsbc76v30i35drh9q0.apps.googleusercontent.com",
