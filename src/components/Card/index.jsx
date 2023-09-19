@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { FaCartPlus, FaCheck, FaCheckCircle } from "react-icons/fa";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
 import CardButton from "../CartButton/CartButton";
 
-function Card({ data, openProductDetails, openShoppingAside }) {
+function Card({ data, openProductDetails }) {
   const { setproductOnDetails } = useContext(ShoppingCartContext);
 
   const showProductDetails = () => {
@@ -32,7 +31,7 @@ function Card({ data, openProductDetails, openShoppingAside }) {
         </span>
 
         <span className="absolute bottom-3 left-4 flex items-center justify-between w-5/6">
-          <CardButton data={data} openShoppingAside={openShoppingAside} />
+          <CardButton data={data} />
           <p className="tx-price px-2 py-1 rounded-md">$ {data.item.price}</p>
         </span>
       </div>

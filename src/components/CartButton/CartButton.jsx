@@ -3,8 +3,9 @@ import { useContext } from "react";
 import { FaCartPlus, FaCheckCircle } from "react-icons/fa";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
 
-function CardButton({ data, openShoppingAside }) {
-  let { shoppingCart, addToShoppingCart } = useContext(ShoppingCartContext);
+function CartButton({ data }) {
+  const { shoppingCart, addToShoppingCart, openShoppingAside } =
+    useContext(ShoppingCartContext);
   const index = shoppingCart.findIndex((product) => product.id === data.id);
   return (
     <button
@@ -24,4 +25,4 @@ function CardButton({ data, openShoppingAside }) {
   );
 }
 
-export default CardButton;
+export default CartButton;

@@ -13,13 +13,16 @@ const ShoppingCartProvider = ({ children }) => {
   const shoppingCounter = shoppingCart.length;
 
   //Add the property key to each product *
-
   shoppingCart.map((product) => {
     product.key = uuidv4();
   });
 
-  //Shopping Aside • CRUD:
+  //Shopping Cart Aside :
+  const [shoppingOpen, setShoppingOpen] = useState(false);
+  const openShoppingAside = () => setShoppingOpen(true);
+  const closeShoppingAside = () => setShoppingOpen(false);
 
+  //Shopping Aside • CRUD:
   const addToShoppingCart = (newItem) => {
     let newShoppingCart = [];
     const productRepeated = shoppingCart.find(
@@ -109,6 +112,10 @@ const ShoppingCartProvider = ({ children }) => {
       value={{
         productOnDetails,
         setproductOnDetails,
+
+        shoppingOpen,
+        openShoppingAside,
+        closeShoppingAside,
 
         shoppingCounter,
         shoppingCart,

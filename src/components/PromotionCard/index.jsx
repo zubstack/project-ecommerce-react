@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../context/ShoppingContext";
+import CartButton from "../CartButton/CartButton";
 
-function PromotionCard({ openProductDetails, data }) {
-  let { setproductOnDetails } = useContext(ShoppingCartContext);
+function PromotionCard({ data, openProductDetails }) {
+  const { setproductOnDetails } = useContext(ShoppingCartContext);
+
   const showProductDetails = () => {
     openProductDetails();
     setproductOnDetails(data);
@@ -32,15 +34,16 @@ function PromotionCard({ openProductDetails, data }) {
         <p className="text-sm font-light tx-title text-start mb-5">
           {data?.item.name}
         </p>
-        <p>
+        <p className="mb-4">
           PRICE:{" "}
-          <span className="text-sm font-light line-through">
+          <span className="text-sm font-light line-through ">
             ${data?.item.price}
           </span>
-          <span className="absolute right-8 text-2xl bottom-4 tx-price">
-            ${data?.item.price ? (data?.item.price * 0.8).toFixed(2) : ""}
-          </span>
         </p>
+        <CartButton data={data} />
+        <span className="absolute right-8 text-2xl bottom-4 tx-price">
+          ${data?.item.price ? (data?.item.price * 0.8).toFixed(2) : ""}
+        </span>
       </div>
     </div>
   );
