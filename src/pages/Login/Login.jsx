@@ -1,12 +1,14 @@
 import jwt_decode from "jwt-decode";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { setUser, user } = useContext(UserContext);
-  console.log("user", user);
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
   function handleCallbackResponse(response) {
     setUser(jwt_decode(response.credential));
+    navigate("/");
   }
   useEffect(() => {
     /* global google */
@@ -30,3 +32,4 @@ function Login() {
 export default Login;
 
 //PENDING: Login layout
+//PENDING: Remember user after refresh

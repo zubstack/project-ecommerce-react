@@ -57,3 +57,4 @@ function Summary({ total }) {
 export default Summary;
 
 //PENDING: Fix prices => $0.00
+//PENDING: Fix subtotal

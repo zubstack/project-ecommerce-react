@@ -24,3 +24,5 @@ function OrdersCard({ data }) {
 }
 
 export default OrdersCard;
+
+//PENDING: Show products quantity
