@@ -10,6 +10,8 @@ import Billboard from "../../components/Billboard";
 function Home() {
   //Products: ==============================================================
   const { products, showPromotions } = useContext(ProductContext);
+  console.log("showPromotions", showPromotions);
+
   const { shoppingOpen, closeShoppingAside } = useContext(ShoppingCartContext);
   //Details : ======================================================
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -39,12 +41,14 @@ function Home() {
 
   return (
     <div className="flex flex-col items-center text-center">
-      <Billboard />
       {showPromotions && (
-        <Promotions
-          openProductDetails={openProductDetails}
-          products={products}
-        />
+        <>
+          <Billboard />
+          <Promotions
+            openProductDetails={openProductDetails}
+            products={products}
+          />
+        </>
       )}
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg mb-12">
         {renderView()}
