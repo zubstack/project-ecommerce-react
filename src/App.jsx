@@ -3,7 +3,7 @@ import { BrowserRouter, useRoutes } from 'react-router-dom';
 import Home from './pages/Home';
 import MyAccount from './pages/MyAccount';
 import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar';
+import Navbar from './ui/NavbarTop';
 import './App.css';
 import { ProductProvider } from './context/ProductContext';
 import { ShoppingCartProvider } from './context/ShoppingContext';
