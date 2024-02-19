@@ -3,7 +3,6 @@ import { BrowserRouter, useRoutes } from 'react-router-dom';
 import Home from './pages/Home';
 import MyAccount from './pages/MyAccount';
 import NotFound from './pages/NotFound';
-import Navbar from './ui/NavbarTop';
 import './App.css';
 import { ProductProvider } from './context/ProductContext';
 import { ShoppingCartProvider } from './context/ShoppingContext';
@@ -12,6 +11,7 @@ import { UserProvider } from './context/UserContext';
 import ProductDetails from './pages/ProductDetails';
 import MainLayout from './layout/MainLayout';
 import Cart from './pages/Cart';
+import Header from './components/Header';
 
 function AppRoutes() {
   // const { user } = useContext(UserContext);
@@ -50,7 +50,7 @@ function App() {
       <ProductProvider>
         <ShoppingCartProvider>
           <BrowserRouter>
-            <Navbar />
+            <Header />
             <MainLayout>
               <AppRoutes />
             </MainLayout>

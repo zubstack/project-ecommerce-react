@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 @layer base {
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* width */
@@ -31,22 +37,18 @@
   background: #b9b9b9;
 }
 
-.nav-text {
-  font-family: "Pathway Extreme", sans-serif;
-}
-
 .tx-title {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .tx-price {
   font-weight: bold;
   font-size: 20px;
-  font-family: "Rajdhani", sans-serif;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .font-rajdhani {
-  font-family: "Rajdhani", sans-serif;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .mark-gray {
@@ -65,7 +67,6 @@ label {
   padding: 10px 3px;
 }
 
-input {
-  padding: 5px;
-  font-size: 12px;
+header {
+  font-weight: lighter;
 }
