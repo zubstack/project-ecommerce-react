@@ -4,7 +4,7 @@ import { ShoppingCartContext } from '../../context/ShoppingContext';
 import { ProductContext } from '../../context/ProductContext';
 import { FaShoppingCart } from 'react-icons/fa';
 import { UserContext } from '../../context/UserContext';
-import DropdownUser from '../DropdownUser';
+import DropdownUser from '../../ui/DropdownUser';
 import storeLogo from '../../assets/basketballstore-205x74.png';
 
 function NavbarTop() {
