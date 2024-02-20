@@ -13,8 +13,8 @@ function NavbarTop() {
   const { shoppingCounter } = useContext(ShoppingCartContext);
 
   return (
-    <div className='flex shadow-md justify-between items-center px-10'>
-      <div className='mb-8'>
+    <div className='flex shadow-md justify-between items-center px-10 pt-2'>
+      <div className='mb-6'>
         <NavLink to={'/'}>
           <img src={storeLogo} alt='logo' height={74} width={205} />
         </NavLink>
