@@ -9,7 +9,6 @@ import { ShoppingCartProvider } from './context/ShoppingContext';
 import Login from './pages/Login';
 import { UserProvider } from './context/UserContext';
 import ProductDetails from './pages/ProductDetails';
-import MainLayout from './layout/MainLayout';
 import Cart from './pages/Cart';
 import Header from './components/Header';
 
@@ -51,9 +50,7 @@ function App() {
         <ShoppingCartProvider>
           <BrowserRouter>
             <Header />
-            <MainLayout>
-              <AppRoutes />
-            </MainLayout>
+            <AppRoutes />
           </BrowserRouter>
         </ShoppingCartProvider>
       </ProductProvider>

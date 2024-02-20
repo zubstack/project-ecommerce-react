@@ -1,0 +1,25 @@
+/* Billboard.css */
+
+.billboard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 550px; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.billboard img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.content {
+  position: absolute;
+  text-align: center;
+  color: #fff; /* Adjust text color */
+  /* Add any additional styling for your content */
+}
+
+/* Add responsive styles as needed */
