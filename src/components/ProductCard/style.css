@@ -1,0 +1,10 @@
+/* flex flex-1 justify-center items-center text-center bg-black/90 py-1 w-full  text-white  rounded-md */
+
+.cart__button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  cursor: pointer;
+}

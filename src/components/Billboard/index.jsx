@@ -3,7 +3,7 @@ import './style.css';
 
 function Billboard() {
   return (
-    <div className='billboard'>
+    <div className='billboard mb-10'>
       {/* <div
         className='w-full rounded-xl relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover'
         style={{ backgroundImage: `url(${imageUrl})` }}
