@@ -1,5 +1,5 @@
-import NavbarTop from '../../ui/NavbarTop';
-import NavbarDesktop from '../../ui/NavbarDesktop';
+import NavbarDesktop from '../NavbarDesktop';
+import NavbarTop from '../NavbarTop';
 
 function Header() {
   return (
