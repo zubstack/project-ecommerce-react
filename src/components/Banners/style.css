@@ -1,0 +1,20 @@
+#banners__container {
+  position: relative;
+  display: flex;
+  height: 200px; /* Adjust the height as needed */
+  overflow: hidden;
+  justify-content: space-between;
+  width: 94%;
+  margin-top: -90px;
+}
+#banners__container .banner__img {
+  transition: transform 0.5s ease;
+  filter: grayscale(100%) brightness(30%) sepia(30%);
+  max-width: 25%;
+  width: 25%;
+  height: auto;
+}
+
+#banners__container .banner__img:hover {
+  transform: scale(1.1);
+}

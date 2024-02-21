@@ -26,6 +26,7 @@ function Home() {
   return (
     <div className='flex flex-col items-center text-center'>
       <Billboard />
+      {/* <Banners /> */}
       <Products products={products} />
       <ShoppingAside
         closeShoppingAside={closeShoppingAside}
