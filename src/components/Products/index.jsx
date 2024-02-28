@@ -2,7 +2,13 @@ import ProductCard from '../ProductCard';
 
 function Products({ products }) {
   return (
-    <main className='main__products grid gap-4 grid-cols-4 w-full max-w-screen-lg mb-12'>
+    <main className='main__products grid gap-2 grid-cols-5 w-full mb-12 px-12'>
+      {products.map((item) => (
+        <ProductCard key={item.id} data={item} />
+      ))}
+      {products.map((item) => (
+        <ProductCard key={item.id} data={item} />
+      ))}
       {products.map((item) => (
         <ProductCard key={item.id} data={item} />
       ))}
