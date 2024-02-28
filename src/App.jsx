@@ -11,6 +11,7 @@ import { UserProvider } from './context/UserContext';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function AppRoutes() {
   // const { user } = useContext(UserContext);
@@ -51,6 +52,7 @@ function App() {
           <BrowserRouter>
             <Header />
             <AppRoutes />
+            <Footer />
           </BrowserRouter>
         </ShoppingCartProvider>
       </ProductProvider>
