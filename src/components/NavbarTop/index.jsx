@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ShoppingCartContext } from '../../context/ShoppingContext';
-import { ProductContext } from '../../context/ProductContext';
+// import { ProductContext } from '../../context/ProductContext';
 import { FaShoppingCart } from 'react-icons/fa';
 import { UserContext } from '../../context/UserContext';
 import DropdownUser from '../../ui/DropdownUser';
@@ -9,7 +9,7 @@ import storeLogo from '../../assets/basketballstore-205x74.png';
 
 function NavbarTop() {
   const { user, setUser } = useContext(UserContext);
-  const { updateProducts } = useContext(ProductContext);
+  // const { updateProducts } = useContext(ProductContext);
   const { shoppingCounter } = useContext(ShoppingCartContext);
 
   return (
@@ -25,9 +25,9 @@ function NavbarTop() {
           className='flex-grow-1 rounded-sm border border-black/50 w-full py-2 px-3 focus:outline-none placeholder-black/80 text-[14px]'
           type='text'
           placeholder='Search...'
-          onChange={(event) => {
-            updateProducts(event.target.value);
-          }}
+          // onChange={(event) => {
+          //   updateProducts(event.target.value);
+          // }}
         />
       </div>
 

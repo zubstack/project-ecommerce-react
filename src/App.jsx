@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import MyAccount from './pages/MyAccount';
 import NotFound from './pages/NotFound';
 import './App.css';
-import { ProductProvider } from './context/ProductContext';
 import { ShoppingCartProvider } from './context/ShoppingContext';
 import Login from './pages/Login';
 import { UserProvider } from './context/UserContext';
@@ -47,15 +46,13 @@ function AppRoutes() {
 function App() {
   return (
     <UserProvider>
-      <ProductProvider>
-        <ShoppingCartProvider>
-          <BrowserRouter>
-            <Header />
-            <AppRoutes />
-            <Footer />
-          </BrowserRouter>
-        </ShoppingCartProvider>
-      </ProductProvider>
+      <ShoppingCartProvider>
+        <BrowserRouter>
+          <Header />
+          <AppRoutes />
+          <Footer />
+        </BrowserRouter>
+      </ShoppingCartProvider>
     </UserProvider>
   );
 }
