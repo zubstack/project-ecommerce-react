@@ -9,9 +9,6 @@ function Products({ products }) {
       {products.map((item) => (
         <ProductCard key={item.id} data={item} />
       ))}
-      {products.map((item) => (
-        <ProductCard key={item.id} data={item} />
-      ))}
     </main>
   );
 }
