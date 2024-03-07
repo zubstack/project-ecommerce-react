@@ -1,9 +1,11 @@
 import endpoints from '../../services/endpoints';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NotFound from '../NotFound';
 import AddCartButton from '../../ui/AddCartButton';
+import { ShoppingCartContext } from '../../context/ShoppingContext';
+import TemporalNotification from '../../ui/TemporalNotification';
 
 const avaibleSizes = [
   '  39',
@@ -21,9 +23,14 @@ const avaibleSizes = [
 ];
 
 function ProductsDetails() {
+  const { addToShoppingCart } = useContext(ShoppingCartContext);
   const [product, setProduct] = useState(null);
   const [productVariant, setProductVariant] = useState(null);
   const [selectedProductSize, setSelectedProductSize] = useState(null);
+  const [notificationState, setNotificationState] = useState({
+    isOpen: false,
+    error: false,
+  });
   const { id: productId } = useParams();
 
   async function fetchProduct() {
@@ -36,12 +43,14 @@ function ProductsDetails() {
       console.error('Error when trying to fetch the product by id', error);
     }
   }
-  console.log('product', product);
-  console.log('productVariant', productVariant);
 
   useEffect(() => {
     fetchProduct();
   }, []);
+
+  function handleResetSize() {
+    setSelectedProductSize(null);
+  }
 
   function handleSizeSelection(size, avaible) {
     if (!avaible) return;
@@ -53,10 +62,38 @@ function ProductsDetails() {
     setSelectedProductSize(null);
   }
 
+  function handleAddProductToShoppingCart(product) {
+    const isOrderReady = selectedProductSize !== null;
+    setNotificationState({
+      ...notificationState,
+      isOpen: true,
+      error: !isOrderReady,
+    });
+    if (isOrderReady) {
+      addToShoppingCart(product);
+    }
+
+    setTimeout(() => {
+      setNotificationState({ ...notificationState, isOpen: false });
+    }, 3000);
+  }
+
+  function renderNotification() {
+    if (notificationState.isOpen)
+      return (
+        <TemporalNotification
+          variant={productVariant}
+          productName={product.name}
+          error={notificationState.error}
+        />
+      );
+  }
+
   if (!product) return <NotFound />;
 
   return (
     <>
+      {renderNotification()}
       <div className='w-[94vw] m-auto '>
         <div className='flex gap-4 mt-8 mb-6 text-black/80'>
           <div className='min-w-[640px]'>
@@ -105,7 +142,7 @@ function ProductsDetails() {
                     item.variant_name === productVariant.variant_name;
                   return (
                     <div
-                      className='w-28 relative group cursor-pointer'
+                      className='w-28 relative group cursor-pointer -z-10'
                       key={item.variant_name}
                     >
                       <img
@@ -149,9 +186,18 @@ function ProductsDetails() {
                   );
                 })}
               </div>
+              <button
+                className='font-thin text-orange-500 hover:underline'
+                onClick={handleResetSize}
+              >
+                Reset size
+              </button>
             </div>
             <div>
-              <AddCartButton className='uppercase bg-orange-500 text-white w-full font-thin text-sm px-2 py-3'>
+              <AddCartButton
+                className='uppercase bg-orange-500 text-white w-full font-thin text-sm px-2 py-3'
+                onClick={() => handleAddProductToShoppingCart(product)}
+              >
                 Add to cart
               </AddCartButton>
             </div>
@@ -175,7 +221,7 @@ function Specifications({ title, description }) {
 }
 function ProductDescription({ item }) {
   return (
-    <div className='bg-gray-100 py-5 px-4 mb-4'>
+    <div className='bg-gray-100 py-5 px-4 mb-12'>
       <div className='mb-4'>
         <div className='text-black/90 w-[9%] mb-4'>
           <h4 className='mb-1 text-[0.95rem]'>DESCRIPTION</h4>
