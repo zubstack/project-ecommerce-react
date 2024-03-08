@@ -17,8 +17,12 @@ function Cart() {
   if (!shoppingCart.length) {
     return (
       <>
-        <div className='mt-20'>
-          <h1>{'No shopping cart :('}</h1>
+        <div className='px-10 mt-12'>
+          <h1 className='text-4xl mb-8'>
+            Shopping Cart
+            <hr className='border-orange-500 mt-2 w-1/5' />
+          </h1>
+          <p className='font-thin mb-20'>Your shopping cart is empty!</p>
         </div>
       </>
     );
@@ -26,10 +30,11 @@ function Cart() {
   return (
     <>
       <div className='flex gap-20'>
-        <div className=' p-4 mt-4 w-[700px] '>
-          <div>
-            <h1 className='text-2xl font-light mb-4'>My Cart</h1>
-          </div>
+        <div className='px-10 mt-12'>
+          <h1 className='text-4xl mb-8'>
+            Shopping Cart
+            <hr className='border-orange-500 mt-2 w-2/5' />
+          </h1>
           <div className='px-1 overflow-auto h-[70vh]'>
             {shoppingCart?.map((product) => (
               <FinalProductCard key={product.id} data={product} />
