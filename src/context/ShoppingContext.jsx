@@ -1,10 +1,11 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid';
 
 const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = ({ children }) => {
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useLocalStorage('shoppingCart', []);
   const shoppingCounter = shoppingCart.length;
   shoppingCart.map((product) => {
     product.key = uuidv4();
