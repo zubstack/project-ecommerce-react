@@ -1,4 +1,46 @@
+import { Link } from 'react-router-dom';
 import storeIcon from '../../assets/store_minicon.png';
+
+const storeLinks = [
+  {
+    title: '  About Us',
+    to: '/',
+  },
+  {
+    title: 'Contact and Support',
+    to: '/',
+  },
+  {
+    title: 'Return',
+    to: '/',
+  },
+  {
+    title: 'Team and conditions',
+    to: '/',
+  },
+  {
+    title: 'Privacy Policy',
+    to: '/',
+  },
+];
+const userLinks = [
+  {
+    title: 'Register',
+    to: '/login',
+  },
+  {
+    title: 'My account',
+    to: '/',
+  },
+  {
+    title: 'Orders',
+    to: '/',
+  },
+  {
+    title: 'GDPR Tools',
+    to: '/',
+  },
+];
 
 function Footer() {
   return (
@@ -15,57 +57,34 @@ function Footer() {
         <h4 className='font-bold uppercase mb-2'>Customer Serivice</h4>
         <hr className='w-[56px] mb-4 border-orange-500' />
         <ul className='text-sm'>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              About Us
-            </a>
-          </li>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              Contact and Support
-            </a>
-          </li>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              Return
-            </a>
-          </li>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              Team and conditions
-            </a>
-          </li>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              Privacy Policy
-            </a>
-          </li>
+          {storeLinks.map((link) => (
+            <li key={link.title} className='px-4 cursor-pointer mb-1'>
+              <Link
+                to={link.to}
+                className='text-white/80 hover:text-white'
+                href='#'
+              >
+                {link.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className='p-4 w-[256px]'>
         <h4 className='font-bold uppercase mb-2'>Account & Orders</h4>
         <hr className='w-[56px] mb-4 border-orange-500' />
         <ul className='text-sm'>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              Register
-            </a>
-          </li>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              My Account
-            </a>
-          </li>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              Orders
-            </a>
-          </li>
-          <li className='px-4 cursor-pointer mb-1'>
-            <a className='text-white/80 hover:text-white' href='#'>
-              GDPR Tools
-            </a>
-          </li>
+          {userLinks.map((link) => (
+            <li key={link.title} className='px-4 cursor-pointer mb-1'>
+              <Link
+                to={link.to}
+                className='text-white/80 hover:text-white'
+                href='#'
+              >
+                {link.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className='p-4 w-[320px]'>

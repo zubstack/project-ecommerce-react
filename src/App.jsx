@@ -1,4 +1,3 @@
-// import { useContext } from 'react';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 import Home from './pages/Home';
 import MyAccount from './pages/MyAccount';
@@ -13,7 +12,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 function AppRoutes() {
-  // const { user } = useContext(UserContext);
   let routes = useRoutes([
     {
       path: '/',

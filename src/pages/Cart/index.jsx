@@ -8,8 +8,6 @@ function Cart() {
     useContext(ShoppingCartContext);
 
   function handleChangeProductQuantity(quantity, id) {
-    console.log('Updatin quantiyy');
-    console.log('shoppingCart', shoppingCart);
     const newShoppingCart = [...shoppingCart];
     const productIndex = newShoppingCart.findIndex((item) => item.id === id);
     newShoppingCart[productIndex].quantity = Number(quantity);

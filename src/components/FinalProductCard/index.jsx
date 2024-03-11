@@ -2,11 +2,8 @@ import { useContext, useState } from 'react';
 import { ShoppingCartContext } from '../../context/ShoppingContext';
 
 function FinalProductCard({ product, handleChangeProductQuantity }) {
-  const { removeFromShoppingCart, getTotalPrice } =
-    useContext(ShoppingCartContext);
+  const { removeFromShoppingCart } = useContext(ShoppingCartContext);
   const [quantity, setQuantity] = useState(1);
-
-  console.log('product', getTotalPrice());
 
   return (
     <div className='flex items-center border border-white border-b-stone-200 mb-3'>
