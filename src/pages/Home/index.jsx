@@ -1,13 +1,10 @@
-import ShoppingAside from '../../components/ShoppingAside';
-import { useContext, useEffect, useState } from 'react';
-import { ShoppingCartContext } from '../../context/ShoppingContext';
 import endpoints from '../../services/endpoints';
 import Billboard from '../../components/Billboard';
 import Products from '../../components/Products/index.jsx';
+import { useEffect, useState } from 'react';
 
 function Home() {
   const [products, setProducts] = useState([]);
-  const { shoppingOpen, closeShoppingAside } = useContext(ShoppingCartContext);
 
   const fetchProducts = async () => {
     try {
@@ -28,10 +25,6 @@ function Home() {
       <Billboard />
       {/* <Banners /> */}
       <Products products={products} />
-      <ShoppingAside
-        closeShoppingAside={closeShoppingAside}
-        shoppingOpen={shoppingOpen}
-      />
     </div>
   );
 }

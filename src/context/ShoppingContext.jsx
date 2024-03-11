@@ -10,12 +10,6 @@ const ShoppingCartProvider = ({ children }) => {
     product.key = uuidv4();
   });
 
-  //Shopping Cart Aside :
-  const [shoppingOpen, setShoppingOpen] = useState(false);
-  const openShoppingAside = () => setShoppingOpen(true);
-  const closeShoppingAside = () => setShoppingOpen(false);
-
-  //Shopping Aside • CRUD:
   const addToShoppingCart = (newItem) => {
     let newShoppingCart = [];
     const productRepeated = shoppingCart.find(
@@ -38,22 +32,18 @@ const ShoppingCartProvider = ({ children }) => {
     setShoppingCart(newShoppingCart);
   };
 
-  const showTotalPrice = () =>
-    shoppingCart.reduce((total, product) => total + product.item.price, 0);
+  const getTotalPrice = () =>
+    shoppingCart.reduce((total, product) => total + product.price, 0);
 
   return (
     <ShoppingCartContext.Provider
       value={{
-        shoppingOpen,
-        openShoppingAside,
-        closeShoppingAside,
-
         shoppingCounter,
         shoppingCart,
         setShoppingCart,
         addToShoppingCart,
         removeFromShoppingCart,
-        showTotalPrice,
+        getTotalPrice,
       }}
     >
       {children}

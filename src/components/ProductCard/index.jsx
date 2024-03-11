@@ -1,22 +1,8 @@
 import './style.css';
 import { Link } from 'react-router-dom';
 import AddCartButton from '../../ui/AddCartButton';
-// import { useContext } from 'react';
-// import { ShoppingCartContext } from '../../context/ShoppingContext';
 
 function ProductCard({ data }) {
-  // const navigate = useNavigate();
-  // const { addToShoppingCart, openShoppingAside } =
-  // useContext(ShoppingCartContext);
-
-  // function showProductDetails() {
-  //   navigate(`/${data.id}`);
-  // }
-
-  // function handleAddNewProduct(item) {
-  //   addToShoppingCart(item);
-  //   openShoppingAside();
-  // }
   return (
     <div className='w-60 border border-black/10 rounded-lg p-2 relative hover:shadow-xl'>
       <div className="className='relative mb-2 w-full cursor-pointer'">
@@ -37,10 +23,7 @@ function ProductCard({ data }) {
           <p className='tx-normal mb-10'>$ {data.variants[0].price}</p>
         </div>
         <Link to={`/${data.id}`}>
-          <AddCartButton
-            className='cart__button flex flex-1 justify-center items-center w-30 p-2 text-white rounded-sm text-center text-xs bg-black/80 hover:bg-orange-400 duration-150'
-            // onClick={() => handleAddNewProduct(data)}
-          >
+          <AddCartButton className='cart__button flex flex-1 justify-center items-center w-30 p-2 text-white rounded-sm text-center text-xs bg-black/80 hover:bg-orange-400 duration-150'>
             ADD TO CART
           </AddCartButton>
         </Link>
