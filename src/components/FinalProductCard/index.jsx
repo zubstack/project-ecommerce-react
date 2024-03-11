@@ -1,34 +1,34 @@
 import { useContext, useState } from 'react';
 import { ShoppingCartContext } from '../../context/ShoppingContext';
 
-function FinalProductCard({ data }) {
-  const { removeFromShoppingCart } = useContext(ShoppingCartContext);
+function FinalProductCard({ product, handleChangeProductQuantity }) {
+  const { removeFromShoppingCart, getTotalPrice } =
+    useContext(ShoppingCartContext);
   const [quantity, setQuantity] = useState(1);
-  console.log('data', data);
+
+  console.log('product', getTotalPrice());
+
   return (
     <div className='flex items-center border border-white border-b-stone-200 mb-3'>
-      <figure className='w-[200px] h-[150px] border border-gray-300 rounded-md '>
-        <img
-          className='w-full h-full object-cover  rounded-sm '
-          src={data?.variants[0].images[0]}
-          alt=''
-        />
-      </figure>
-      <div className='px-4 w-[300px]'>
-        <p className='text-md font-light text-start'>{data?.name}</p>
-        <p className=' text-sm font-bold'>{data?.brand}</p>
-        {/* <p className='text-gray-700 text-sm font-light text-start '>
-          Type: {data?.specifications.keyboard_type}
-        </p> */}
-        {/* <p className='text-gray-700 text-sm font-light text-start mb-2'>
-          {data?.specifications.dimensions}
-        </p> */}
-        <button
-          className='font-light underline text-sm text-gray-400'
-          onClick={() => removeFromShoppingCart(data.id)}
-        >
-          Remove
-        </button>
+      <div className='flex items-center flex-1 mb-2'>
+        <figure className='w-[200px] h-[150px] border border-gray-300 rounded-md '>
+          <img
+            className='w-full h-full object-cover  rounded-sm '
+            src={product?.images[0]}
+            alt=''
+          />
+        </figure>
+        <div className='px-4'>
+          <p className='text-md font-light text-start'>{product?.name}</p>
+          <p className=' text-sm font-bold'>{product?.brand}</p>
+
+          <button
+            className='font-light underline text-sm text-gray-400'
+            onClick={() => removeFromShoppingCart(product.id)}
+          >
+            Remove
+          </button>
+        </div>
       </div>
       <div className='flex flex-col items-end text-end'>
         <div className='flex mb-4 border rounded-md'>
@@ -45,14 +45,16 @@ function FinalProductCard({ data }) {
             placeholder='1'
             min='0'
             max={20}
-            onChange={(event) => setQuantity(event.target.value)}
+            onChange={(event) => {
+              setQuantity(event.target.value);
+              handleChangeProductQuantity(event.target.value, product.id);
+            }}
           />
         </div>
         <div className='text-sm font-light w-40 px-3'>
           <p className='text-gray-400'>Total:</p>
           <p className='text-lg '>
-            {/* $ {data?.price * (!quantity ? 1 : quantity)} */}
-            $$$
+            $ {product?.price * (!quantity ? 1 : quantity)}
           </p>
         </div>
       </div>

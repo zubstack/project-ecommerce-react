@@ -62,7 +62,7 @@ function ProductsDetails() {
     setSelectedProductSize(null);
   }
 
-  function handleAddProductToShoppingCart(product) {
+  function handleAddProductToShoppingCart() {
     const isOrderReady = selectedProductSize !== null;
     setNotificationState({
       ...notificationState,
@@ -70,7 +70,16 @@ function ProductsDetails() {
       error: !isOrderReady,
     });
     if (isOrderReady) {
-      addToShoppingCart(product);
+      const { brand, name, id } = product;
+      const { images, price } = productVariant;
+      addToShoppingCart({
+        brand,
+        id,
+        name,
+        images,
+        price,
+        selectedProductSize,
+      });
     }
 
     setTimeout(() => {
@@ -196,7 +205,7 @@ function ProductsDetails() {
             <div>
               <AddCartButton
                 className='uppercase bg-orange-500 text-white w-full font-thin text-sm px-2 py-3'
-                onClick={() => handleAddProductToShoppingCart(product)}
+                onClick={() => handleAddProductToShoppingCart()}
               >
                 Add to cart
               </AddCartButton>
@@ -245,8 +254,6 @@ function ProductDescription({ item }) {
 
 export default ProductsDetails;
 
-//PENDING: addToShoppingCart(data);
-//PENDING: openShoppingAside();
 //PENDING: See details button => link
 //PENDING: Link to go back
 //PENDING: Stars component

@@ -4,16 +4,18 @@ import FinalProductCard from '../../components/FinalProductCard';
 import Summary from '../../components/Summary';
 
 function Cart() {
-  const { shoppingCart } = useContext(ShoppingCartContext);
-  function getTotalPrice() {
-    //const prices = shoppingCart.map((product) => product.item.price);
+  const { shoppingCart, setShoppingCart, getTotalPrice } =
+    useContext(ShoppingCartContext);
 
-    //return prices.reduce(
-    //(accumulator, currentValue) => accumulator + currentValue,
-    //0
-    //);
-    return '$$';
+  function handleChangeProductQuantity(quantity, id) {
+    console.log('Updatin quantiyy');
+    console.log('shoppingCart', shoppingCart);
+    const newShoppingCart = [...shoppingCart];
+    const productIndex = newShoppingCart.findIndex((item) => item.id === id);
+    newShoppingCart[productIndex].quantity = Number(quantity);
+    setShoppingCart([...newShoppingCart]);
   }
+
   if (!shoppingCart.length) {
     return (
       <>
@@ -29,15 +31,19 @@ function Cart() {
   }
   return (
     <>
-      <div className='flex gap-20'>
-        <div className='px-10 mt-12'>
+      <div className='flex gap-4'>
+        <div className='px-10 mt-12 flex-1 mb-12'>
           <h1 className='text-4xl mb-8'>
             Shopping Cart
             <hr className='border-orange-500 mt-2 w-2/5' />
           </h1>
-          <div className='px-1 overflow-auto h-[70vh]'>
+          <div className='px-1'>
             {shoppingCart?.map((product) => (
-              <FinalProductCard key={product.id} data={product} />
+              <FinalProductCard
+                key={product.id}
+                product={product}
+                handleChangeProductQuantity={handleChangeProductQuantity}
+              />
             ))}
           </div>
         </div>

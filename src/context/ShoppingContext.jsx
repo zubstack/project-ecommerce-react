@@ -33,7 +33,10 @@ const ShoppingCartProvider = ({ children }) => {
   };
 
   const getTotalPrice = () =>
-    shoppingCart.reduce((total, product) => total + product.price, 0);
+    shoppingCart.reduce(
+      (total, product) => total + product.price * product.quantity,
+      0
+    );
 
   return (
     <ShoppingCartContext.Provider
