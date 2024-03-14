@@ -25,12 +25,12 @@ const storeLinks = [
 ];
 const userLinks = [
   {
-    title: 'Register',
+    title: 'Login',
     to: '/login',
   },
   {
     title: 'My account',
-    to: '/',
+    to: '/account',
   },
   {
     title: 'Orders',

@@ -1,17 +1,19 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 import Home from './pages/Home';
-import MyAccount from './pages/MyAccount';
+import UserAccount from './pages/UserAccount';
 import NotFound from './pages/NotFound';
 import './App.css';
 import { ShoppingCartProvider } from './context/ShoppingContext';
 import Login from './pages/Login';
-import { UserProvider } from './context/UserContext';
+import { UserContext, UserProvider } from './context/UserContext';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { useContext } from 'react';
 
 function AppRoutes() {
+  const { user } = useContext(UserContext);
   let routes = useRoutes([
     {
       path: '/',
@@ -27,7 +29,7 @@ function AppRoutes() {
     },
     {
       path: '/account',
-      element: <MyAccount />,
+      element: user ? <UserAccount /> : <Login />,
     },
     {
       path: '/login',

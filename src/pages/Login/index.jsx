@@ -2,14 +2,22 @@ import jwt_decode from 'jwt-decode';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import endpoints from '../../services/endpoints';
+import axios from 'axios';
 
 function Login() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  function handleCallbackResponse(response) {
-    setUser(jwt_decode(response.credential));
-    navigate('/');
+  async function handleCallbackResponse(response) {
+    try {
+      const decodedUser = jwt_decode(response.credential);
+      await axios.post(endpoints.loginUser, { email: decodedUser.email });
+      setUser(decodedUser);
+      navigate('/');
+    } catch (error) {
+      console.error('Login error: ', error);
+    }
   }
   useEffect(() => {
     /* global google */
